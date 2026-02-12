@@ -1,0 +1,41 @@
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import dts from 'vite-plugin-dts'
+import { resolve } from 'path'
+
+export default defineConfig({
+  plugins: [
+    vue(),
+    dts({
+      insertTypesEntry: true,
+      include: ['src/**/*.ts', 'src/**/*.vue'],
+    }),
+  ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
+  build: {
+    lib: {
+      entry: resolve(__dirname, 'src/index.ts'),
+      name: 'TailwindUI',
+      formats: ['es', 'umd'],
+      fileName: (format) => `tailwind-ui.${format === 'es' ? 'js' : 'umd.cjs'}`,
+    },
+    rollupOptions: {
+      external: ['vue', 'vue-router'],
+      output: {
+        globals: {
+          vue: 'Vue',
+          'vue-router': 'VueRouter',
+        },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') return 'style.css'
+          return assetInfo.name || ''
+        },
+      },
+    },
+    cssCodeSplit: false,
+  },
+})
