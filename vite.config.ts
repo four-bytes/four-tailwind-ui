@@ -19,9 +19,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'TailwindUI',
+      name: 'FourTailwindUI',
       formats: ['es', 'umd'],
-      fileName: (format) => `tailwind-ui.${format === 'es' ? 'js' : 'umd.cjs'}`,
+      fileName: (format) => `four-tailwind-ui.${format === 'es' ? 'js' : 'umd.cjs'}`,
     },
     rollupOptions: {
       external: ['vue', 'vue-router'],

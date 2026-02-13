@@ -1,11 +1,11 @@
-# @four-bytes/tailwind-ui
+# @four-bytes/four-tailwind-ui
 
 Reusable Vue 3 + Tailwind CSS UI components based on TailAdmin.
 
 ## Installation
 
 ```bash
-npm install @four-bytes/tailwind-ui
+npm install @four-bytes/four-tailwind-ui
 ```
 
 ## Setup
@@ -15,7 +15,7 @@ npm install @four-bytes/tailwind-ui
 In your main entry file (e.g., `main.ts`):
 
 ```ts
-import '@four-bytes/tailwind-ui/style.css'
+import '@four-bytes/four-tailwind-ui/style.css'
 ```
 
 ### 2. Configure Tailwind CSS
@@ -23,13 +23,13 @@ import '@four-bytes/tailwind-ui/style.css'
 Extend your `tailwind.config.js`:
 
 ```js
-import tailwindConfig from '@four-bytes/tailwind-ui/tailwind.config'
+import tailwindConfig from '@four-bytes/four-tailwind-ui/tailwind.config'
 
 export default {
   presets: [tailwindConfig],
   content: [
     './src/**/*.{vue,js,ts,jsx,tsx}',
-    './node_modules/@four-bytes/tailwind-ui/**/*.{vue,js,ts}',
+    './node_modules/@four-bytes/four-tailwind-ui/**/*.{vue,js,ts}',
   ],
 }
 ```
@@ -38,7 +38,7 @@ export default {
 
 ```vue
 <script setup>
-import { Button, InputField, Modal, CheckIcon } from '@four-bytes/tailwind-ui'
+import { Button, InputField, Modal, CheckIcon } from '@four-bytes/four-tailwind-ui'
 </script>
 
 <template>
@@ -127,7 +127,7 @@ All icons from TailAdmin are included:
 
 ```vue
 <script setup>
-import { CheckIcon, TrashIcon, SettingsIcon } from '@four-bytes/tailwind-ui'
+import { CheckIcon, TrashIcon, SettingsIcon } from '@four-bytes/four-tailwind-ui'
 </script>
 
 <template>
@@ -142,7 +142,7 @@ Available icons: `ArchiveIcon`, `BarChartIcon`, `BellIcon`, `BoxCubeIcon`, `BoxI
 ### useSidebar
 
 ```ts
-import { useSidebar } from '@four-bytes/tailwind-ui'
+import { useSidebar } from '@four-bytes/four-tailwind-ui'
 
 const { isExpanded, isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSidebar()
 ```
@@ -150,7 +150,7 @@ const { isExpanded, isMobileOpen, toggleSidebar, toggleMobileSidebar } = useSide
 ### useTheme
 
 ```ts
-import { useTheme } from '@four-bytes/tailwind-ui'
+import { useTheme } from '@four-bytes/four-tailwind-ui'
 
 const { isDarkMode, toggleTheme, setTheme } = useTheme()
 ```
@@ -158,7 +158,7 @@ const { isDarkMode, toggleTheme, setTheme } = useTheme()
 ### useClickOutside
 
 ```ts
-import { useClickOutside } from '@four-bytes/tailwind-ui'
+import { useClickOutside } from '@four-bytes/four-tailwind-ui'
 import { ref } from 'vue'
 
 const dropdownRef = ref<HTMLElement | null>(null)
@@ -173,7 +173,7 @@ useClickOutside(dropdownRef, () => {
 
 ```vue
 <script setup>
-import { vClickOutside } from '@four-bytes/tailwind-ui'
+import { vClickOutside } from '@four-bytes/four-tailwind-ui'
 </script>
 
 <template>
@@ -193,7 +193,7 @@ import {
   AdminLayout,
   ThemeToggler,
   Avatar,
-} from '@four-bytes/tailwind-ui'
+} from '@four-bytes/four-tailwind-ui'
 </script>
 
 <template>
