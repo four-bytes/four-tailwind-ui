@@ -106,7 +106,7 @@ const gridStyle = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style>
 .icon-gallery {
   --ig-border: #e5e7eb;
   --ig-bg: #ffffff;
@@ -126,7 +126,7 @@ const gridStyle = computed(() => {
   box-sizing: border-box;
 }
 
-:global(html.dark) .icon-gallery {
+html.dark .icon-gallery {
   --ig-border: #374151;
   --ig-bg: #1f2937;
   --ig-bg-soft: #111827;
