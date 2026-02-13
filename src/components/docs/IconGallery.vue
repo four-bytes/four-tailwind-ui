@@ -113,14 +113,17 @@ const gridStyle = computed(() => {
   --ig-brand: #6366f1;
   --ig-success: #10b981;
   --ig-success-soft: #d1fae5;
+  margin-top: 1.5rem;
 }
 
-.dark .icon-gallery {
+:global(.dark) .icon-gallery,
+.icon-gallery:global(.dark) {
   --ig-border: #374151;
   --ig-bg: #1f2937;
   --ig-bg-soft: #111827;
   --ig-text: #f9fafb;
   --ig-text-muted: #9ca3af;
+  --ig-success-soft: #064e3b;
 }
 
 .icon-gallery-search {
@@ -156,21 +159,26 @@ const gridStyle = computed(() => {
 }
 
 .icon-gallery-grid {
-  display: grid;
-  gap: 1rem;
+  display: grid !important;
+  gap: 1rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .icon-gallery-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1.25rem 0.75rem;
-  border: 1px solid var(--ig-border);
-  border-radius: 8px;
-  background: var(--ig-bg);
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding: 1.25rem 0.75rem !important;
+  border: 1px solid var(--ig-border) !important;
+  border-radius: 8px !important;
+  background: var(--ig-bg) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  margin: 0 !important;
 }
 
 .icon-gallery-card:hover {

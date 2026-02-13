@@ -1,6 +1,15 @@
 import { defineConfig } from 'vitepress'
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
+  vite: {
+    resolve: {
+      alias: {
+        '@lib': fileURLToPath(new URL('../../src', import.meta.url))
+      }
+    }
+  },
+
   title: 'Four Tailwind UI',
   description: 'Vue 3 + Tailwind CSS UI Components',
   
