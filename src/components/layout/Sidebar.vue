@@ -49,19 +49,35 @@
 </template>
 
 <script setup lang="ts">
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { useSidebar } from '../../composables/useSidebar'
 
 const props = withDefaults(
   defineProps<{
     /** Enable hover expansion when collapsed */
     hoverExpand?: boolean
+    /** Close mobile sidebar on route change (default: true) */
+    closeOnNavigate?: boolean
   }>(),
   {
     hoverExpand: true,
+    closeOnNavigate: true,
   }
 )
 
-const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar()
+const { isExpanded, isMobileOpen, isHovered, setIsHovered, closeMobileSidebar } = useSidebar()
+
+// Auf Mobile: Sidebar schließen wenn zu einer neuen Route navigiert wird
+const route = useRoute()
+watch(
+  () => route.path,
+  () => {
+    if (props.closeOnNavigate) {
+      closeMobileSidebar()
+    }
+  }
+)
 
 const handleMouseEnter = () => {
   if (props.hoverExpand && !isExpanded.value) {
