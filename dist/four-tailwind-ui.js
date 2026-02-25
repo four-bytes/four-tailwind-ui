@@ -1504,7 +1504,13 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
     closeOnNavigate: { type: Boolean, default: !0 }
   },
   setup(e) {
-    const t = e, { isExpanded: o, isMobileOpen: r, isHovered: s, setIsHovered: i, closeMobileSidebar: d } = u1(), c = te();
+    const t = e, {
+      isExpanded: o,
+      isMobileOpen: r,
+      isHovered: s,
+      setIsHovered: i,
+      closeMobileSidebar: d
+    } = u1(), c = te();
     c1(
       () => c.path,
       () => {
@@ -1518,7 +1524,7 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
     };
     return (m, C) => (l(), a("aside", {
       class: h([
-        "fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-[9999] border-r border-gray-200",
+        "fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 dark:text-gray-100 h-screen transition-all duration-300 ease-in-out z-[9999] border-r border-gray-200",
         {
           "lg:w-[290px]": $(o) || $(r) || $(s),
           "lg:w-[90px]": !$(o) && !$(s),
@@ -1566,7 +1572,7 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
   for (const [r, s] of t)
     o[r] = s;
   return o;
-}, r0 = /* @__PURE__ */ v(t0, [["__scopeId", "data-v-4f3372e9"]]), o0 = { class: "sticky top-0 flex w-full bg-white border-gray-200 z-[9999] dark:border-gray-800 dark:bg-gray-900 lg:border-b" }, l0 = { class: "flex flex-col items-center justify-between grow lg:flex-row lg:px-6" }, n0 = { class: "flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4" }, a0 = {
+}, r0 = /* @__PURE__ */ v(t0, [["__scopeId", "data-v-df614e78"]]), o0 = { class: "sticky top-0 flex w-full bg-white border-gray-200 z-[9999] dark:border-gray-800 dark:bg-gray-900 lg:border-b" }, l0 = { class: "flex flex-col items-center justify-between grow lg:flex-row lg:px-6" }, n0 = { class: "flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4" }, a0 = {
   key: 0,
   class: "fill-current",
   width: "24",
@@ -2568,7 +2574,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
                   }, null, 6)
                 ]),
                 n("span", {
-                  class: h(`text-[9px] leading-none mt-1.5 shrink-0 ${C.highlighted ? `${r.value.textLight} ${r.value.textDark} font-medium` : C.group === ((k = e.items[e.items.length - 1]) == null ? void 0 : k.group) ? "text-gray-500 dark:text-gray-500" : "text-gray-300 dark:text-gray-700"}`)
+                  class: h(`text-[9px] leading-none mt-1.5 shrink-0 ${C.highlighted ? `${r.value.textLight} ${r.value.textDark} font-medium` : C.group === ((k = e.items[e.items.length - 1]) == null ? void 0 : k.group) ? "text-gray-500 dark:text-gray-500" : "text-gray-300 dark:text-gray-500"}`)
                 }, g(C.label), 3)
               ], 2);
             }), 128))

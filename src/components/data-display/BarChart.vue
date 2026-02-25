@@ -133,7 +133,7 @@ const groupBoundaryIndices = computed(() => {
                 ? `${colors.textLight} ${colors.textDark} font-medium`
                 : bar.group === items[items.length - 1]?.group
                   ? 'text-gray-500 dark:text-gray-500'
-                  : 'text-gray-300 dark:text-gray-700'
+                  : 'text-gray-300 dark:text-gray-500'
             }`"
           >
             {{ bar.label }}

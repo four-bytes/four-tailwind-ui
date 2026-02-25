@@ -1,7 +1,7 @@
 <template>
   <aside
     :class="[
-      'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 h-screen transition-all duration-300 ease-in-out z-[9999] border-r border-gray-200',
+      'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 dark:text-gray-100 h-screen transition-all duration-300 ease-in-out z-[9999] border-r border-gray-200',
       {
         'lg:w-[290px]': isExpanded || isMobileOpen || isHovered,
         'lg:w-[90px]': !isExpanded && !isHovered,
@@ -20,13 +20,20 @@
         !isExpanded && !isHovered ? 'lg:justify-center' : 'justify-start',
       ]"
     >
-      <slot name="logo" :is-expanded="isExpanded" :is-hovered="isHovered" :is-mobile-open="isMobileOpen">
+      <slot
+        name="logo"
+        :is-expanded="isExpanded"
+        :is-hovered="isHovered"
+        :is-mobile-open="isMobileOpen"
+      >
         <!-- Default: No logo -->
       </slot>
     </div>
 
     <!-- Navigation Content -->
-    <div class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar flex-1">
+    <div
+      class="flex flex-col overflow-y-auto duration-300 ease-linear no-scrollbar flex-1"
+    >
       <nav class="mb-6">
         <slot
           :is-expanded="isExpanded"
@@ -40,7 +47,12 @@
 
       <!-- Footer Widget Slot -->
       <div v-if="isExpanded || isHovered || isMobileOpen" class="mt-auto">
-        <slot name="footer" :is-expanded="isExpanded" :is-hovered="isHovered" :is-mobile-open="isMobileOpen">
+        <slot
+          name="footer"
+          :is-expanded="isExpanded"
+          :is-hovered="isHovered"
+          :is-mobile-open="isMobileOpen"
+        >
           <!-- Default: No footer widget -->
         </slot>
       </div>
@@ -49,45 +61,51 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { useSidebar } from '../../composables/useSidebar'
+import { watch } from "vue";
+import { useRoute } from "vue-router";
+import { useSidebar } from "../../composables/useSidebar";
 
 const props = withDefaults(
   defineProps<{
     /** Enable hover expansion when collapsed */
-    hoverExpand?: boolean
+    hoverExpand?: boolean;
     /** Close mobile sidebar on route change (default: true) */
-    closeOnNavigate?: boolean
+    closeOnNavigate?: boolean;
   }>(),
   {
     hoverExpand: true,
     closeOnNavigate: true,
-  }
-)
+  },
+);
 
-const { isExpanded, isMobileOpen, isHovered, setIsHovered, closeMobileSidebar } = useSidebar()
+const {
+  isExpanded,
+  isMobileOpen,
+  isHovered,
+  setIsHovered,
+  closeMobileSidebar,
+} = useSidebar();
 
 // Auf Mobile: Sidebar schließen wenn zu einer neuen Route navigiert wird
-const route = useRoute()
+const route = useRoute();
 watch(
   () => route.path,
   () => {
     if (props.closeOnNavigate) {
-      closeMobileSidebar()
+      closeMobileSidebar();
     }
-  }
-)
+  },
+);
 
 const handleMouseEnter = () => {
   if (props.hoverExpand && !isExpanded.value) {
-    setIsHovered(true)
+    setIsHovered(true);
   }
-}
+};
 
 const handleMouseLeave = () => {
-  setIsHovered(false)
-}
+  setIsHovered(false);
+};
 </script>
 
 <style scoped>
