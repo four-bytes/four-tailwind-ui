@@ -48,3 +48,10 @@
 - style.css: @import 'tailwindcss' source(none) — keine eigene Utility-Kompilierung mehr
 - Utilities kommen ausschließlich vom konsumierenden Projekt via @source
 - Saubere Tailwind v4 Library-Architektur: kein Duplicate-Utility-Konflikt mehr
+
+## [0.2.13] — 2026-02-25
+
+### Geändert
+- `src/style.css`: `@import "tailwindcss" source(none)` ersetzt durch `@import "tailwindcss"` mit `@source` auf eigene Komponenten
+- `@utility`-Blöcke (`menu-item*`, `no-scrollbar`, `custom-scrollbar`) nach `@layer utilities` mit expliziten CSS-Selektoren umgebaut
+- `dist/style.css` enthält jetzt alle Utility-Klassen vollständig — Konsumenten brauchen keinen `@source`-Scan mehr auf Lib-Pfade
