@@ -87,15 +87,24 @@ const {
 } = useSidebar();
 
 // Auf Mobile: Sidebar schließen wenn zu einer neuen Route navigiert wird
-const route = useRoute();
-watch(
-  () => route.path,
-  () => {
-    if (props.closeOnNavigate) {
-      closeMobileSidebar();
-    }
-  },
-);
+// useRoute() optional — kein Crash wenn kein Vue Router registriert
+let route: ReturnType<typeof useRoute> | null = null;
+try {
+  route = useRoute();
+} catch {
+  // Kein Vue Router registriert — closeOnNavigate deaktiviert
+}
+
+if (route) {
+  watch(
+    () => route!.path,
+    () => {
+      if (props.closeOnNavigate) {
+        closeMobileSidebar();
+      }
+    },
+  );
+}
 
 const handleMouseEnter = () => {
   if (props.hoverExpand && !isExpanded.value) {

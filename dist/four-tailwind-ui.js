@@ -40,7 +40,7 @@ const re = ["for"], oe = {
       md: "px-4 py-2.5 text-sm",
       lg: "px-5 py-3 text-base"
     }, s = y(() => r[t.size]), i = y(() => t.error ? "border-error-300 focus:border-error-300 focus:ring-error-500/10 dark:border-error-700 dark:focus:border-error-800" : t.success ? "border-success-300 focus:border-success-300 focus:ring-success-500/10 dark:border-success-700 dark:focus:border-success-800" : "border-gray-300 focus:border-brand-300 focus:ring-brand-500/10 dark:border-gray-700 dark:focus:border-brand-800");
-    return (d, c) => (l(), a("div", null, [
+    return (c, d) => (l(), a("div", null, [
       e.label ? (l(), a("label", {
         key: 0,
         for: o.value,
@@ -54,7 +54,7 @@ const re = ["for"], oe = {
           id: o.value,
           type: e.type,
           value: e.modelValue,
-          onInput: c[0] || (c[0] = (u) => d.$emit("update:modelValue", u.target.value)),
+          onInput: d[0] || (d[0] = (u) => c.$emit("update:modelValue", u.target.value)),
           placeholder: e.placeholder,
           required: e.required,
           disabled: e.disabled,
@@ -66,7 +66,7 @@ const re = ["for"], oe = {
             { "disabled:border-gray-100 disabled:bg-gray-50 disabled:text-gray-400 dark:disabled:border-gray-800 dark:disabled:bg-white/[0.03] dark:disabled:text-gray-500": e.disabled }
           ])
         }, null, 42, ne),
-        e.showStateIcon && e.error ? (l(), a("span", ae, [...c[1] || (c[1] = [
+        e.showStateIcon && e.error ? (l(), a("span", ae, [...d[1] || (d[1] = [
           n("svg", {
             width: "16",
             height: "16",
@@ -82,7 +82,7 @@ const re = ["for"], oe = {
             })
           ], -1)
         ])])) : f("", !0),
-        e.showStateIcon && e.success && !e.error ? (l(), a("span", se, [...c[2] || (c[2] = [
+        e.showStateIcon && e.success && !e.error ? (l(), a("span", se, [...d[2] || (d[2] = [
           n("svg", {
             width: "16",
             height: "16",
@@ -130,10 +130,10 @@ const re = ["for"], oe = {
   emits: ["update:modelValue"],
   setup(e) {
     const t = e, o = d1(), r = y(() => `input-group-${Math.random().toString(36).substr(2, 9)}`), s = y(() => {
-      const i = !!t.prefix || !!o.prefix, d = !!t.suffix || !!o.suffix;
-      return i && d ? "rounded-none" : i ? "rounded-l-none rounded-r-lg" : d ? "rounded-l-lg rounded-r-none" : "rounded-lg";
+      const i = !!t.prefix || !!o.prefix, c = !!t.suffix || !!o.suffix;
+      return i && c ? "rounded-none" : i ? "rounded-l-none rounded-r-lg" : c ? "rounded-l-lg rounded-r-none" : "rounded-lg";
     });
-    return (i, d) => (l(), a("div", null, [
+    return (i, c) => (l(), a("div", null, [
       e.label ? (l(), a("label", {
         key: 0,
         for: r.value,
@@ -152,7 +152,7 @@ const re = ["for"], oe = {
           id: r.value,
           type: e.type,
           value: e.modelValue,
-          onInput: d[0] || (d[0] = (c) => i.$emit("update:modelValue", c.target.value)),
+          onInput: c[0] || (c[0] = (d) => i.$emit("update:modelValue", d.target.value)),
           placeholder: e.placeholder,
           required: e.required,
           disabled: e.disabled,
@@ -194,14 +194,14 @@ const re = ["for"], oe = {
   },
   emits: ["update:modelValue", "validation"],
   setup(e, { emit: t }) {
-    const o = e, r = t, s = y(() => `email-${Math.random().toString(36).substr(2, 9)}`), i = z(!1), d = z(""), c = /^[^\s@]+@[^\s@]+\.[^\s@]+$/, u = y(() => o.error ? o.error : i.value && d.value ? d.value : "");
+    const o = e, r = t, s = y(() => `email-${Math.random().toString(36).substr(2, 9)}`), i = z(!1), c = z(""), d = /^[^\s@]+@[^\s@]+\.[^\s@]+$/, u = y(() => o.error ? o.error : i.value && c.value ? c.value : "");
     function b(x) {
       var p, $;
-      return !x && o.required ? (d.value = ((p = o.errorMessages) == null ? void 0 : p.required) || "Email is required", !1) : x && !c.test(x) ? (d.value = (($ = o.errorMessages) == null ? void 0 : $.invalid) || "Please enter a valid email address", !1) : (d.value = "", !0);
+      return !x && o.required ? (c.value = ((p = o.errorMessages) == null ? void 0 : p.required) || "Email is required", !1) : x && !d.test(x) ? (c.value = (($ = o.errorMessages) == null ? void 0 : $.invalid) || "Please enter a valid email address", !1) : (c.value = "", !0);
     }
     function m(x) {
       const p = x.target.value;
-      r("update:modelValue", p), i.value && c.test(p) && (d.value = "", r("validation", !0));
+      r("update:modelValue", p), i.value && d.test(p) && (c.value = "", r("validation", !0));
     }
     function C() {
       i.value = !0;
@@ -606,16 +606,16 @@ const re = ["for"], oe = {
   },
   emits: ["update:modelValue"],
   setup(e, { emit: t }) {
-    const o = e, r = t, s = z(!1), i = z(null), d = y(() => o.modelValue), c = () => {
+    const o = e, r = t, s = z(!1), i = z(null), c = y(() => o.modelValue), d = () => {
       s.value = !s.value;
     }, u = (x) => {
-      const p = d.value.findIndex((M) => M.value === x.value);
+      const p = c.value.findIndex((M) => M.value === x.value);
       let $;
-      p === -1 ? $ = [...d.value, x] : $ = d.value.filter((M, H) => H !== p), r("update:modelValue", $);
+      p === -1 ? $ = [...c.value, x] : $ = c.value.filter((M, H) => H !== p), r("update:modelValue", $);
     }, b = (x) => {
-      const p = d.value.filter(($) => $.value !== x.value);
+      const p = c.value.filter(($) => $.value !== x.value);
       r("update:modelValue", p);
-    }, m = (x) => d.value.some((p) => p.value === x.value), C = (x) => {
+    }, m = (x) => c.value.some((p) => p.value === x.value), C = (x) => {
       i.value && !i.value.contains(x.target) && (s.value = !1);
     };
     return l1(() => {
@@ -636,16 +636,16 @@ const re = ["for"], oe = {
         ref: i
       }, [
         n("div", {
-          onClick: p[0] || (p[0] = ($) => !e.disabled && c()),
+          onClick: p[0] || (p[0] = ($) => !e.disabled && d()),
           class: h(["min-h-11 flex items-center w-full appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800", [
             { "text-gray-800 dark:text-white/90": s.value },
             { "cursor-not-allowed opacity-50": e.disabled },
             e.error ? "border-error-300 dark:border-error-700" : ""
           ]])
         }, [
-          d.value.length === 0 ? (l(), a("span", Ye, g(e.placeholder || "Select items..."), 1)) : f("", !0),
+          c.value.length === 0 ? (l(), a("span", Ye, g(e.placeholder || "Select items..."), 1)) : f("", !0),
           n("div", et, [
-            (l(!0), a(j, null, E(d.value, ($) => (l(), a("div", {
+            (l(!0), a(j, null, E(c.value, ($) => (l(), a("div", {
               key: $.value,
               class: "group flex items-center justify-center h-[30px] rounded-full border-[0.7px] border-transparent bg-gray-100 py-1 pl-2.5 pr-2 text-sm text-gray-800 hover:border-gray-200 dark:bg-gray-800 dark:text-white/90 dark:hover:border-gray-800"
             }, [
@@ -750,10 +750,10 @@ const re = ["for"], oe = {
   emits: ["change"],
   setup(e, { emit: t }) {
     const o = t, r = y(() => `file-${Math.random().toString(36).substr(2, 9)}`), s = (i) => {
-      const d = i.target;
-      o("change", d.files);
+      const c = i.target;
+      o("change", c.files);
     };
-    return (i, d) => (l(), a("div", null, [
+    return (i, c) => (l(), a("div", null, [
       e.label ? (l(), a("label", {
         key: 0,
         for: r.value,
@@ -810,10 +810,10 @@ const re = ["for"], oe = {
       outline: "bg-white text-gray-700 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03] dark:hover:text-gray-300",
       ghost: "bg-transparent text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-300",
       danger: "bg-error-500 text-white shadow-theme-xs hover:bg-error-600 disabled:bg-error-300"
-    }, d = (c) => {
-      !o.disabled && !o.loading && r("click", c);
+    }, c = (d) => {
+      !o.disabled && !o.loading && r("click", d);
     };
-    return (c, u) => (l(), a("button", {
+    return (d, u) => (l(), a("button", {
       class: h([
         "inline-flex items-center justify-center font-medium gap-2 rounded-lg transition",
         s[e.size],
@@ -821,7 +821,7 @@ const re = ["for"], oe = {
         e.className,
         { "cursor-not-allowed opacity-50": e.disabled }
       ]),
-      onClick: d,
+      onClick: c,
       disabled: e.disabled || e.loading,
       type: e.type
     }, [
@@ -842,7 +842,7 @@ const re = ["for"], oe = {
       ])])) : e.startIcon ? (l(), a("span", ht, [
         (l(), I(P(e.startIcon)))
       ])) : f("", !0),
-      L(c.$slots, "default"),
+      L(d.$slots, "default"),
       e.endIcon && !e.loading ? (l(), a("span", mt, [
         (l(), I(P(e.endIcon)))
       ])) : f("", !0)
@@ -1024,13 +1024,13 @@ const re = ["for"], oe = {
         dark: "bg-gray-700 text-white dark:text-white"
       }
     }, s = y(() => o[t.size]), i = y(() => r[t.variant][t.color]);
-    return (d, c) => (l(), a("span", {
+    return (c, d) => (l(), a("span", {
       class: h([Mt, s.value, i.value])
     }, [
       e.startIcon ? (l(), a("span", Vt, [
         (l(), I(P(e.startIcon)))
       ])) : f("", !0),
-      L(d.$slots, "default"),
+      L(c.$slots, "default"),
       e.endIcon ? (l(), a("span", Lt, [
         (l(), I(P(e.endIcon)))
       ])) : f("", !0)
@@ -1054,7 +1054,7 @@ const re = ["for"], oe = {
       error: "bg-error-50 border-error-200 text-error-800 dark:bg-error-900/30 dark:border-error-800 dark:text-error-200",
       warning: "bg-warning-50 border-warning-200 text-warning-800 dark:bg-warning-900/30 dark:border-warning-800 dark:text-warning-200",
       info: "bg-blue-light-50 border-blue-light-200 text-blue-light-800 dark:bg-blue-light-900/30 dark:border-blue-light-800 dark:text-blue-light-200"
-    }, d = {
+    }, c = {
       success: () => A("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor" }, [
         A("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M5 13l4 4L19 7" })
       ]),
@@ -1068,7 +1068,7 @@ const re = ["for"], oe = {
         A("path", { "stroke-linecap": "round", "stroke-linejoin": "round", "stroke-width": "2", d: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" })
       ])
     };
-    return (c, u) => (l(), a("div", {
+    return (d, u) => (l(), a("div", {
       class: h([
         "flex items-start gap-3 rounded-lg border p-4 shadow-lg",
         t[e.type]
@@ -1076,7 +1076,7 @@ const re = ["for"], oe = {
       role: "alert"
     }, [
       n("div", Ht, [
-        (l(), I(P(d[e.type]), { class: "h-5 w-5" }))
+        (l(), I(P(c[e.type]), { class: "h-5 w-5" }))
       ]),
       n("div", _t, [
         n("p", Bt, g(e.title), 1),
@@ -1086,7 +1086,7 @@ const re = ["for"], oe = {
         key: 0,
         type: "button",
         class: "flex-shrink-0 rounded-md p-1 hover:bg-black/10 dark:hover:bg-white/10 transition-colors",
-        onClick: u[0] || (u[0] = (b) => c.$emit("dismiss"))
+        onClick: u[0] || (u[0] = (b) => d.$emit("dismiss"))
       }, [...u[1] || (u[1] = [
         n("svg", {
           class: "h-4 w-4",
@@ -1171,13 +1171,13 @@ const Ul = /* @__PURE__ */ V({
           "move-class": "transition duration-300 ease-out"
         }, {
           default: S(() => [
-            (l(!0), a(j, null, E(k(t), (d) => (l(), I(St, {
-              key: d.id,
-              type: d.type,
-              title: d.title,
-              message: d.message,
+            (l(!0), a(j, null, E(k(t), (c) => (l(), I(St, {
+              key: c.id,
+              type: c.type,
+              title: c.title,
+              message: c.message,
               dismissible: !0,
-              onDismiss: (c) => k(o)(d.id)
+              onDismiss: (d) => k(o)(c.id)
             }, null, 8, ["type", "title", "message", "onDismiss"]))), 128))
           ]),
           _: 1
@@ -1208,17 +1208,17 @@ const Ul = /* @__PURE__ */ V({
     })[o.size]), i = y(() => {
       const u = "fixed inset-0 h-full w-full", b = o.blur ? "backdrop-blur-[32px]" : "";
       return `${u} ${b} bg-black/60 dark:bg-black/70`;
-    }), d = () => {
+    }), c = () => {
       o.closeOnBackdrop && (r("update:modelValue", !1), r("close"));
-    }, c = (u) => {
+    }, d = (u) => {
       u.key === "Escape" && o.closeOnEscape && o.modelValue && (r("update:modelValue", !1), r("close"));
     };
     return c1(() => o.modelValue, (u) => {
       u ? document.body.style.overflow = "hidden" : document.body.style.overflow = "";
     }), l1(() => {
-      document.addEventListener("keydown", c);
+      document.addEventListener("keydown", d);
     }), p1(() => {
-      document.removeEventListener("keydown", c), document.body.style.overflow = "";
+      document.removeEventListener("keydown", d), document.body.style.overflow = "";
     }), (u, b) => (l(), I(z1, { to: "body" }, [
       R(r1, {
         "enter-active-class": "transition ease-out duration-200",
@@ -1233,7 +1233,7 @@ const Ul = /* @__PURE__ */ V({
             n("div", {
               class: h(i.value),
               "aria-hidden": "true",
-              onClick: d
+              onClick: c
             }, null, 2),
             R(r1, {
               "enter-active-class": "transition ease-out duration-200",
@@ -1297,9 +1297,9 @@ const Ul = /* @__PURE__ */ V({
         default:
           return "bg-brand-500 hover:bg-brand-600";
       }
-    }), d = () => {
+    }), c = () => {
       !o.loading && !o.confirmDisabled && r("confirm");
-    }, c = () => {
+    }, d = () => {
       r("cancel"), r("close"), r("update:modelValue", !1);
     };
     return (u, b) => (l(), I(Et, {
@@ -1320,12 +1320,12 @@ const Ul = /* @__PURE__ */ V({
           n("div", Ft, [
             n("button", {
               type: "button",
-              onClick: c,
+              onClick: d,
               class: "flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto"
             }, g(e.cancelText), 1),
             n("button", {
               type: "button",
-              onClick: d,
+              onClick: c,
               disabled: e.loading || e.confirmDisabled,
               class: h(["flex w-full justify-center rounded-lg px-4 py-2.5 text-sm font-medium text-white sm:w-auto disabled:opacity-50", i.value])
             }, [
@@ -1390,7 +1390,7 @@ const Ul = /* @__PURE__ */ V({
   setup(e, { emit: t }) {
     const o = e, r = t, s = y({
       get: () => o.modelValue,
-      set: (d) => r("update:modelValue", d)
+      set: (c) => r("update:modelValue", c)
     }), i = y(() => {
       switch (o.variant) {
         case "danger":
@@ -1401,9 +1401,9 @@ const Ul = /* @__PURE__ */ V({
           return "bg-brand-100 dark:bg-brand-500/20";
       }
     });
-    return (d, c) => (l(), I(Nt, {
+    return (c, d) => (l(), I(Nt, {
       modelValue: s.value,
-      "onUpdate:modelValue": c[0] || (c[0] = (u) => s.value = u),
+      "onUpdate:modelValue": d[0] || (d[0] = (u) => s.value = u),
       title: e.title,
       subtitle: e.message,
       confirmText: e.confirmText,
@@ -1411,29 +1411,29 @@ const Ul = /* @__PURE__ */ V({
       loading: e.loading,
       variant: e.variant,
       size: "sm",
-      onConfirm: c[1] || (c[1] = (u) => d.$emit("confirm")),
-      onCancel: c[2] || (c[2] = (u) => d.$emit("cancel"))
+      onConfirm: d[1] || (d[1] = (u) => c.$emit("confirm")),
+      onCancel: d[2] || (d[2] = (u) => c.$emit("cancel"))
     }, {
       default: S(() => [
         e.showIcon ? (l(), a("div", Wt, [
           n("div", {
             class: h(["flex h-12 w-12 items-center justify-center rounded-full", i.value])
           }, [
-            e.variant === "danger" ? (l(), a("svg", Ut, [...c[3] || (c[3] = [
+            e.variant === "danger" ? (l(), a("svg", Ut, [...d[3] || (d[3] = [
               n("path", {
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
                 "stroke-width": "2",
                 d: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
               }, null, -1)
-            ])])) : e.variant === "success" ? (l(), a("svg", Kt, [...c[4] || (c[4] = [
+            ])])) : e.variant === "success" ? (l(), a("svg", Kt, [...d[4] || (d[4] = [
               n("path", {
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
                 "stroke-width": "2",
                 d: "M5 13l4 4L19 7"
               }, null, -1)
-            ])])) : (l(), a("svg", Jt, [...c[5] || (c[5] = [
+            ])])) : (l(), a("svg", Jt, [...d[5] || (d[5] = [
               n("path", {
                 "stroke-linecap": "round",
                 "stroke-linejoin": "round",
@@ -1443,14 +1443,14 @@ const Ul = /* @__PURE__ */ V({
             ])]))
           ], 2)
         ])) : f("", !0),
-        L(d.$slots, "default")
+        L(c.$slots, "default")
       ]),
       _: 3
     }, 8, ["modelValue", "title", "subtitle", "confirmText", "cancelText", "loading", "variant"]));
   }
 }), E1 = Symbol("sidebar");
 function Xt(e = {}) {
-  const { initialExpanded: t = !0, mobileBreakpoint: o = 768 } = e, r = z(t), s = z(!1), i = z(!1), d = z(!1), c = z(null), u = z(null), b = () => {
+  const { initialExpanded: t = !0, mobileBreakpoint: o = 768 } = e, r = z(t), s = z(!1), i = z(!1), c = z(!1), d = z(null), u = z(null), b = () => {
     const _ = window.innerWidth < o;
     i.value = _, _ || (s.value = !1);
   };
@@ -1466,16 +1466,16 @@ function Xt(e = {}) {
   }, x = () => {
     s.value = !1;
   }, p = (_) => {
-    d.value = _;
-  }, $ = (_) => {
     c.value = _;
+  }, $ = (_) => {
+    d.value = _;
   }, M = (_) => {
     u.value = u.value === _ ? null : _;
   }, H = {
     isExpanded: y(() => i.value ? !1 : r.value),
     isMobileOpen: s,
-    isHovered: d,
-    activeItem: c,
+    isHovered: c,
+    activeItem: d,
     openSubmenu: u,
     toggleSidebar: m,
     toggleMobileSidebar: C,
@@ -1509,12 +1509,17 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
       isMobileOpen: r,
       isHovered: s,
       setIsHovered: i,
-      closeMobileSidebar: d
-    } = u1(), c = te();
-    c1(
-      () => c.path,
+      closeMobileSidebar: c
+    } = u1();
+    let d = null;
+    try {
+      d = te();
+    } catch {
+    }
+    d && c1(
+      () => d.path,
       () => {
-        t.closeOnNavigate && d();
+        t.closeOnNavigate && c();
       }
     );
     const u = () => {
@@ -1572,7 +1577,7 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
   for (const [r, s] of t)
     o[r] = s;
   return o;
-}, r0 = /* @__PURE__ */ v(t0, [["__scopeId", "data-v-df614e78"]]), o0 = { class: "sticky top-0 flex w-full bg-white border-gray-200 z-[9999] dark:border-gray-800 dark:bg-gray-900 lg:border-b" }, l0 = { class: "flex flex-col items-center justify-between grow lg:flex-row lg:px-6" }, n0 = { class: "flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4" }, a0 = {
+}, r0 = /* @__PURE__ */ v(t0, [["__scopeId", "data-v-b7bef2b9"]]), o0 = { class: "sticky top-0 flex w-full bg-white border-gray-200 z-[9999] dark:border-gray-800 dark:bg-gray-900 lg:border-b" }, l0 = { class: "flex flex-col items-center justify-between grow lg:flex-row lg:px-6" }, n0 = { class: "flex items-center justify-between w-full gap-2 px-3 py-3 border-b border-gray-200 dark:border-gray-800 sm:gap-4 lg:justify-normal lg:border-b-0 lg:px-0 lg:py-4" }, a0 = {
   key: 0,
   class: "fill-current",
   width: "24",
@@ -1592,10 +1597,10 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
   setup(e) {
     const { toggleSidebar: t, toggleMobileSidebar: o, isMobileOpen: r } = u1(), s = z(!1), i = () => {
       typeof window < "u" && window.innerWidth >= 1024 ? t() : o();
-    }, d = () => {
+    }, c = () => {
       s.value = !s.value;
     };
-    return (c, u) => (l(), a("header", o0, [
+    return (d, u) => (l(), a("header", o0, [
       n("div", l0, [
         n("div", n0, [
           n("button", {
@@ -1621,10 +1626,10 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
               }, null, -1)
             ])]))
           ], 2),
-          L(c.$slots, "logo"),
+          L(d.$slots, "logo"),
           n("button", {
             type: "button",
-            onClick: d,
+            onClick: c,
             class: "flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg z-[9999] hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 lg:hidden"
           }, [...u[2] || (u[2] = [
             n("svg", {
@@ -1643,13 +1648,13 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
             ], -1)
           ])]),
           n("div", i0, [
-            L(c.$slots, "center")
+            L(d.$slots, "center")
           ])
         ]),
         n("div", {
           class: h([[s.value ? "flex" : "hidden"], "items-center justify-between w-full gap-4 px-5 py-4 shadow-theme-md lg:flex lg:justify-end lg:px-0 lg:shadow-none"])
         }, [
-          L(c.$slots, "actions")
+          L(d.$slots, "actions")
         ], 2)
       ])
     ]));
@@ -1739,7 +1744,7 @@ function f0(e = {}) {
     storageKey: t = "theme",
     defaultTheme: o = "light",
     syncWithSystem: r = !0
-  } = e, s = z(o), i = z(!1), d = y(() => s.value === "dark"), c = () => {
+  } = e, s = z(o), i = z(!1), c = y(() => s.value === "dark"), d = () => {
     s.value = s.value === "light" ? "dark" : "light";
   }, u = (C) => {
     s.value = C;
@@ -1761,8 +1766,8 @@ function f0(e = {}) {
   });
   const m = {
     theme: s,
-    isDarkMode: d,
-    toggleTheme: c,
+    isDarkMode: c,
+    toggleTheme: d,
     setTheme: u
   };
   return T1(G1, m), m;
@@ -1847,7 +1852,7 @@ const Ql = /* @__PURE__ */ V({
     initialsTextClass: { default: "text-brand-600 dark:text-brand-400" }
   },
   setup(e) {
-    const t = e, o = y(() => t.initials ? t.initials : t.name ? t.name.split(" ").map((d) => d[0]).join("").toUpperCase().slice(0, 2) : "?"), r = {
+    const t = e, o = y(() => t.initials ? t.initials : t.name ? t.name.split(" ").map((c) => c[0]).join("").toUpperCase().slice(0, 2) : "?"), r = {
       xsmall: "h-6 w-6 text-xs",
       small: "h-8 w-8 text-xs",
       medium: "h-10 w-10 text-sm",
@@ -1866,7 +1871,7 @@ const Ql = /* @__PURE__ */ V({
       offline: "bg-error-400",
       busy: "bg-warning-500"
     };
-    return (d, c) => (l(), a("div", {
+    return (c, d) => (l(), a("div", {
       class: h(["relative rounded-full flex-shrink-0", r[e.size]])
     }, [
       e.src ? (l(), a("img", {
@@ -2248,16 +2253,16 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
   setup(e) {
     const t = e, o = d1(), r = y(
       () => t.details && t.details.length > 0 || !!o.details
-    ), s = y(() => t.value === null || t.max <= 0 ? 0 : Math.min(100, Math.max(0, t.value / t.max * 100))), i = y(() => t.value === null ? "--" : t.value.toLocaleString(t.locale)), d = y(() => t.adaptive ? q1(s.value, t.color, t.thresholds) : t.color), c = y(() => J[d.value]), u = Math.PI * z0, b = y(
+    ), s = y(() => t.value === null || t.max <= 0 ? 0 : Math.min(100, Math.max(0, t.value / t.max * 100))), i = y(() => t.value === null ? "--" : t.value.toLocaleString(t.locale)), c = y(() => t.adaptive ? q1(s.value, t.color, t.thresholds) : t.color), d = y(() => J[c.value]), u = Math.PI * z0, b = y(
       () => u - s.value / 100 * u
     );
     return (m, C) => (l(), I(K, {
-      "class-name": `group relative overflow-hidden ${c.value.hoverBorder} transition-colors ${e.className ?? ""}`,
+      "class-name": `group relative overflow-hidden ${d.value.hoverBorder} transition-colors ${e.className ?? ""}`,
       "content-class": "!p-0"
     }, {
       default: S(() => [
         n("div", {
-          class: h(`absolute inset-0 bg-gradient-to-br ${c.value.gradient} to-transparent`)
+          class: h(`absolute inset-0 bg-gradient-to-br ${d.value.gradient} to-transparent`)
         }, null, 2),
         n("div", y0, [
           n("span", w0, g(e.label), 1),
@@ -2266,14 +2271,14 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
               n("path", {
                 d: "M 10 80 A 70 70 0 0 1 150 80",
                 fill: "none",
-                class: h(`${c.value.trackLight} ${c.value.trackDark}`),
+                class: h(`${d.value.trackLight} ${d.value.trackDark}`),
                 "stroke-width": _1,
                 "stroke-linecap": "round"
               }, null, 2),
               n("path", {
                 d: "M 10 80 A 70 70 0 0 1 150 80",
                 fill: "none",
-                class: h([c.value.bar, "transition-all duration-700 ease-out"]),
+                class: h([d.value.bar, "transition-all duration-700 ease-out"]),
                 "stroke-width": _1,
                 "stroke-linecap": "round",
                 "stroke-dasharray": u,
@@ -2283,7 +2288,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
             n("div", L0, [
               n("div", M0, [
                 n("span", {
-                  class: h(`text-2xl font-bold tabular-nums ${c.value.textLight} ${c.value.textDark}`)
+                  class: h(`text-2xl font-bold tabular-nums ${d.value.textLight} ${d.value.textDark}`)
                 }, g(i.value), 3),
                 n("span", H0, g(e.unit), 1)
               ])
@@ -2338,13 +2343,13 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
     className: {}
   },
   setup(e) {
-    const t = e, o = y(() => t.value === null || t.max <= 0 ? 0 : Math.min(100, Math.max(0, t.value / t.max * 100))), r = y(() => Math.round(t.value ?? 0)), s = y(() => t.adaptive ? q1(o.value, t.color, t.thresholds) : t.color), i = y(() => J[s.value]), d = y(() => {
-      const c = [];
+    const t = e, o = y(() => t.value === null || t.max <= 0 ? 0 : Math.min(100, Math.max(0, t.value / t.max * 100))), r = y(() => Math.round(t.value ?? 0)), s = y(() => t.adaptive ? q1(o.value, t.color, t.thresholds) : t.color), i = y(() => J[s.value]), c = y(() => {
+      const d = [];
       for (let u = 0; u <= t.scaleDivisions; u++)
-        c.push(Math.round(t.max / t.scaleDivisions * u));
-      return c;
+        d.push(Math.round(t.max / t.scaleDivisions * u));
+      return d;
     });
-    return (c, u) => (l(), I(P(e.wrapped ? K : "div"), {
+    return (d, u) => (l(), I(P(e.wrapped ? K : "div"), {
       "class-name": e.className,
       "content-class": "!space-y-3"
     }, X1({
@@ -2373,7 +2378,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
             ])) : f("", !0)
           ], 2),
           e.showScale ? (l(), a("div", R0, [
-            (l(!0), a(j, null, E(d.value, (b) => (l(), a("span", { key: b }, g(b) + g(e.unit), 1))), 128))
+            (l(!0), a(j, null, E(c.value, (b) => (l(), a("span", { key: b }, g(b) + g(e.unit), 1))), 128))
           ])) : f("", !0)
         ], 2)
       ]),
@@ -2468,10 +2473,10 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
   setup(e) {
     function t(s) {
       if (s.value === null) return "--";
-      const i = s.decimals ?? 1, d = (Math.round(s.value * Math.pow(10, i)) / Math.pow(10, i)).toFixed(
+      const i = s.decimals ?? 1, c = (Math.round(s.value * Math.pow(10, i)) / Math.pow(10, i)).toFixed(
         i
       );
-      return s.unit ? `${d} ${s.unit}` : d;
+      return s.unit ? `${c} ${s.unit}` : c;
     }
     function o(s) {
       if (s.value === null) return 0;
@@ -2486,17 +2491,17 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
       "content-class": "!space-y-4 !p-5"
     }, {
       default: S(() => [
-        (l(!0), a(j, null, E(e.rows, (d, c) => (l(), a("div", { key: c }, [
+        (l(!0), a(j, null, E(e.rows, (c, d) => (l(), a("div", { key: d }, [
           n("div", X0, [
-            n("span", Q0, g(d.label), 1),
+            n("span", Q0, g(c.label), 1),
             n("span", {
-              class: h(`text-sm font-medium tabular-nums ${r(d).textLight} ${r(d).textDark}`)
-            }, g(t(d)), 3)
+              class: h(`text-sm font-medium tabular-nums ${r(c).textLight} ${r(c).textDark}`)
+            }, g(t(c)), 3)
           ]),
           n("div", Y0, [
             n("div", {
-              class: h(`h-full rounded-full ${r(d).barSolid} transition-all duration-700`),
-              style: U({ width: `${o(d)}%` })
+              class: h(`h-full rounded-full ${r(c).barSolid} transition-all duration-700`),
+              style: U({ width: `${o(c)}%` })
             }, null, 6)
           ])
         ]))), 128)),
@@ -2534,10 +2539,10 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
     function i(b) {
       return b > 999 ? (b / 1e3).toFixed(1) : String(b);
     }
-    function d(b) {
+    function c(b) {
       return t.formatValue ? t.formatValue(b) : i(b);
     }
-    function c(b) {
+    function d(b) {
       return b <= 0 ? "0%" : `${Math.max(t.minBarPercent, b / s.value * 100)}%`;
     }
     const u = y(() => {
@@ -2573,11 +2578,11 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
                   u.value.has(x) ? "border-l border-gray-300 dark:border-gray-700 pl-0.5" : ""
                 ])
               }, [
-                e.showValues && C.value > 0 ? (l(), a("span", or, g(d(C.value)), 1)) : f("", !0),
+                e.showValues && C.value > 0 ? (l(), a("span", or, g(c(C.value)), 1)) : f("", !0),
                 n("div", lr, [
                   n("div", {
                     class: h(`absolute bottom-0 left-0.5 right-0.5 rounded-t transition-all duration-500 ${C.highlighted ? r.value.barSolid : C.group === ((p = e.items[e.items.length - 1]) == null ? void 0 : p.group) ? r.value.barSolidMuted : r.value.barSolidFaded}`),
-                    style: U({ height: c(C.value) })
+                    style: U({ height: d(C.value) })
                   }, null, 6)
                 ]),
                 n("span", {
@@ -2620,14 +2625,14 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
             L(s.$slots, "header")
           ])) : f("", !0),
           n("div", ir, [
-            (l(!0), a(j, null, E(e.rows, (d, c) => (l(), a("div", {
-              key: c,
-              class: h(["flex items-center justify-between py-1", e.showSeparators && c < e.rows.length - 1 ? "border-b border-gray-100 dark:border-gray-800/50" : ""])
+            (l(!0), a(j, null, E(e.rows, (c, d) => (l(), a("div", {
+              key: d,
+              class: h(["flex items-center justify-between py-1", e.showSeparators && d < e.rows.length - 1 ? "border-b border-gray-100 dark:border-gray-800/50" : ""])
             }, [
-              n("span", dr, g(d.label), 1),
+              n("span", dr, g(c.label), 1),
               n("span", {
-                class: h(`text-sm font-medium tabular-nums ${d.accent ? `${r.value.textLight} ${r.value.textDark}` : "text-gray-700 dark:text-gray-300"}`)
-              }, g(d.value), 3)
+                class: h(`text-sm font-medium tabular-nums ${c.accent ? `${r.value.textLight} ${r.value.textDark}` : "text-gray-700 dark:text-gray-300"}`)
+              }, g(c.value), 3)
             ], 2))), 128))
           ]),
           k(o).footer ? (l(), a("div", cr, [
@@ -2717,12 +2722,12 @@ const Cr = ["onClick"], dn = /* @__PURE__ */ V({
   setup(e, { emit: t }) {
     const o = t, r = z(!1), s = z(null), i = () => {
       r.value = !r.value;
-    }, d = () => {
+    }, c = () => {
       r.value = !1;
-    }, c = (u) => {
-      u.disabled || (u.onClick && u.onClick(), o("select", u), d());
+    }, d = (u) => {
+      u.disabled || (u.onClick && u.onClick(), o("select", u), c());
     };
-    return mr(s, d), (u, b) => (l(), a("div", {
+    return mr(s, c), (u, b) => (l(), a("div", {
       class: "relative",
       ref_key: "dropdownRef",
       ref: s
@@ -2762,11 +2767,11 @@ const Cr = ["onClick"], dn = /* @__PURE__ */ V({
             key: 0,
             class: h(e.menuClass)
           }, [
-            L(u.$slots, "menu", { close: d }, () => [
+            L(u.$slots, "menu", { close: c }, () => [
               (l(!0), a(j, null, E(e.items, (m, C) => (l(), a("button", {
                 key: C,
                 type: "button",
-                onClick: (x) => c(m),
+                onClick: (x) => d(m),
                 class: h(e.itemClass)
               }, [
                 m.icon ? (l(), I(P(m.icon), {
@@ -3659,7 +3664,7 @@ const O2 = /* @__PURE__ */ v(P2, [["render", F2]]), B1 = /* @__PURE__ */ Object.
       if (!o.value) return s.value;
       const b = o.value.toLowerCase();
       return s.value.filter((m) => m.toLowerCase().includes(b));
-    }), d = (b) => B1[b], c = async (b) => {
+    }), c = (b) => B1[b], d = async (b) => {
       const m = `import { ${b} } from '@four-bytes/four-tailwind-ui'`;
       try {
         await navigator.clipboard.writeText(m), r.value = b, setTimeout(() => {
@@ -3688,17 +3693,17 @@ const O2 = /* @__PURE__ */ v(P2, [["render", F2]]), B1 = /* @__PURE__ */ Object.
         (l(!0), a(j, null, E(i.value, (C) => (l(), a("div", {
           key: C,
           class: h(["icon-gallery-card", { "icon-gallery-card--copied": r.value === C }]),
-          onClick: (x) => c(C),
+          onClick: (x) => d(C),
           title: `Click to copy import for ${C}`,
           role: "button",
           tabindex: "0",
-          onKeydown: ee((x) => c(C), ["enter"])
+          onKeydown: ee((x) => d(C), ["enter"])
         }, [
           n("div", {
             class: "icon-gallery-preview",
             style: U({ width: `${e.iconSize}px`, height: `${e.iconSize}px` })
           }, [
-            (l(), I(P(d(C))))
+            (l(), I(P(c(C))))
           ], 4),
           n("span", K2, g(C), 1),
           r.value === C ? (l(), a("span", J2, "Copied!")) : f("", !0)
@@ -3736,17 +3741,17 @@ const y1 = "-", el = (e) => {
     conflictingClassGroupModifiers: r
   } = e;
   return {
-    getClassGroupId: (d) => {
-      const c = d.split(y1);
-      return c[0] === "" && c.length !== 1 && c.shift(), A1(c, t) || tl(d);
+    getClassGroupId: (c) => {
+      const d = c.split(y1);
+      return d[0] === "" && d.length !== 1 && d.shift(), A1(d, t) || tl(c);
     },
-    getConflictingClassGroupIds: (d, c) => {
-      const u = o[d] || [];
-      return c && r[d] ? [...u, ...r[d]] : u;
+    getConflictingClassGroupIds: (c, d) => {
+      const u = o[c] || [];
+      return d && r[c] ? [...u, ...r[c]] : u;
     }
   };
 }, A1 = (e, t) => {
-  var d;
+  var c;
   if (e.length === 0)
     return t.classGroupId;
   const o = e[0], r = t.nextPart.get(o), s = r ? A1(e.slice(1), r) : void 0;
@@ -3755,9 +3760,9 @@ const y1 = "-", el = (e) => {
   if (t.validators.length === 0)
     return;
   const i = e.join(y1);
-  return (d = t.validators.find(({
-    validator: c
-  }) => c(i))) == null ? void 0 : d.classGroupId;
+  return (c = t.validators.find(({
+    validator: d
+  }) => d(i))) == null ? void 0 : c.classGroupId;
 }, Z1 = /^\[(.+)\]$/, tl = (e) => {
   if (Z1.test(e)) {
     const t = Z1.exec(e)[1], o = t == null ? void 0 : t.substring(0, t.indexOf(":"));
@@ -3772,8 +3777,8 @@ const y1 = "-", el = (e) => {
     nextPart: /* @__PURE__ */ new Map(),
     validators: []
   };
-  return ll(Object.entries(e.classGroups), o).forEach(([i, d]) => {
-    v1(d, r, i, t);
+  return ll(Object.entries(e.classGroups), o).forEach(([i, c]) => {
+    v1(c, r, i, t);
   }), r;
 }, v1 = (e, t, o, r) => {
   e.forEach((s) => {
@@ -3793,8 +3798,8 @@ const y1 = "-", el = (e) => {
       });
       return;
     }
-    Object.entries(s).forEach(([i, d]) => {
-      v1(d, S1(t, i), o, r);
+    Object.entries(s).forEach(([i, c]) => {
+      v1(c, S1(t, i), o, r);
     });
   });
 }, S1 = (e, t) => {
@@ -3806,7 +3811,7 @@ const y1 = "-", el = (e) => {
     }), o = o.nextPart.get(r);
   }), o;
 }, ol = (e) => e.isThemeGetter, ll = (e, t) => t ? e.map(([o, r]) => {
-  const s = r.map((i) => typeof i == "string" ? t + i : typeof i == "object" ? Object.fromEntries(Object.entries(i).map(([d, c]) => [t + d, c])) : i);
+  const s = r.map((i) => typeof i == "string" ? t + i : typeof i == "object" ? Object.fromEntries(Object.entries(i).map(([c, d]) => [t + c, d])) : i);
   return [o, s];
 }) : e, nl = (e) => {
   if (e < 1)
@@ -3817,33 +3822,33 @@ const y1 = "-", el = (e) => {
       }
     };
   let t = 0, o = /* @__PURE__ */ new Map(), r = /* @__PURE__ */ new Map();
-  const s = (i, d) => {
-    o.set(i, d), t++, t > e && (t = 0, r = o, o = /* @__PURE__ */ new Map());
+  const s = (i, c) => {
+    o.set(i, c), t++, t > e && (t = 0, r = o, o = /* @__PURE__ */ new Map());
   };
   return {
     get(i) {
-      let d = o.get(i);
-      if (d !== void 0)
-        return d;
-      if ((d = r.get(i)) !== void 0)
-        return s(i, d), d;
+      let c = o.get(i);
+      if (c !== void 0)
+        return c;
+      if ((c = r.get(i)) !== void 0)
+        return s(i, c), c;
     },
-    set(i, d) {
-      o.has(i) ? o.set(i, d) : s(i, d);
+    set(i, c) {
+      o.has(i) ? o.set(i, c) : s(i, c);
     }
   };
 }, F1 = "!", al = (e) => {
   const {
     separator: t,
     experimentalParseClassName: o
-  } = e, r = t.length === 1, s = t[0], i = t.length, d = (c) => {
+  } = e, r = t.length === 1, s = t[0], i = t.length, c = (d) => {
     const u = [];
     let b = 0, m = 0, C;
-    for (let H = 0; H < c.length; H++) {
-      let _ = c[H];
+    for (let H = 0; H < d.length; H++) {
+      let _ = d[H];
       if (b === 0) {
-        if (_ === s && (r || c.slice(H, H + i) === t)) {
-          u.push(c.slice(m, H)), m = H + i;
+        if (_ === s && (r || d.slice(H, H + i) === t)) {
+          u.push(d.slice(m, H)), m = H + i;
           continue;
         }
         if (_ === "/") {
@@ -3853,7 +3858,7 @@ const y1 = "-", el = (e) => {
       }
       _ === "[" ? b++ : _ === "]" && b--;
     }
-    const x = u.length === 0 ? c : c.substring(m), p = x.startsWith(F1), $ = p ? x.substring(1) : x, M = C && C > m ? C - m : void 0;
+    const x = u.length === 0 ? d : d.substring(m), p = x.startsWith(F1), $ = p ? x.substring(1) : x, M = C && C > m ? C - m : void 0;
     return {
       modifiers: u,
       hasImportantModifier: p,
@@ -3861,10 +3866,10 @@ const y1 = "-", el = (e) => {
       maybePostfixModifierPosition: M
     };
   };
-  return o ? (c) => o({
-    className: c,
-    parseClassName: d
-  }) : d;
+  return o ? (d) => o({
+    className: d,
+    parseClassName: c
+  }) : c;
 }, sl = (e) => {
   if (e.length <= 1)
     return e;
@@ -3882,10 +3887,10 @@ const y1 = "-", el = (e) => {
     parseClassName: o,
     getClassGroupId: r,
     getConflictingClassGroupIds: s
-  } = t, i = [], d = e.trim().split(dl);
-  let c = "";
-  for (let u = d.length - 1; u >= 0; u -= 1) {
-    const b = d[u], {
+  } = t, i = [], c = e.trim().split(dl);
+  let d = "";
+  for (let u = c.length - 1; u >= 0; u -= 1) {
+    const b = c[u], {
       modifiers: m,
       hasImportantModifier: C,
       baseClassName: x,
@@ -3894,11 +3899,11 @@ const y1 = "-", el = (e) => {
     let $ = !!p, M = r($ ? x.substring(0, p) : x);
     if (!M) {
       if (!$) {
-        c = b + (c.length > 0 ? " " + c : c);
+        d = b + (d.length > 0 ? " " + d : d);
         continue;
       }
       if (M = r(x), !M) {
-        c = b + (c.length > 0 ? " " + c : c);
+        d = b + (d.length > 0 ? " " + d : d);
         continue;
       }
       $ = !1;
@@ -3912,9 +3917,9 @@ const y1 = "-", el = (e) => {
       const n1 = Q[N];
       i.push(_ + n1);
     }
-    c = b + (c.length > 0 ? " " + c : c);
+    d = b + (d.length > 0 ? " " + d : d);
   }
-  return c;
+  return d;
 };
 function ul() {
   let e = 0, t, o, r = "";
@@ -3931,12 +3936,12 @@ const O1 = (e) => {
   return o;
 };
 function gl(e, ...t) {
-  let o, r, s, i = d;
-  function d(u) {
-    const b = t.reduce((m, C) => C(m), e());
-    return o = il(b), r = o.cache.get, s = o.cache.set, i = c, c(u);
-  }
+  let o, r, s, i = c;
   function c(u) {
+    const b = t.reduce((m, C) => C(m), e());
+    return o = il(b), r = o.cache.get, s = o.cache.set, i = d, d(u);
+  }
+  function d(u) {
     const b = r(u);
     if (b)
       return b;
@@ -3959,7 +3964,7 @@ const B = (e) => {
   // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
   ml.test(e) && !Cl.test(e)
 ), N1 = () => !1, Hl = (e) => xl.test(e), _l = (e) => vl.test(e), Bl = () => {
-  const e = B("colors"), t = B("spacing"), o = B("blur"), r = B("brightness"), s = B("borderColor"), i = B("borderRadius"), d = B("borderSpacing"), c = B("borderWidth"), u = B("contrast"), b = B("grayscale"), m = B("hueRotate"), C = B("invert"), x = B("gap"), p = B("gradientColorStops"), $ = B("gradientColorStopPositions"), M = B("inset"), H = B("margin"), _ = B("opacity"), T = B("padding"), Q = B("saturate"), N = B("scale"), n1 = B("sepia"), w1 = B("skew"), k1 = B("space"), $1 = B("translate"), g1 = () => ["auto", "contain", "none"], f1 = () => ["auto", "hidden", "clip", "visible", "scroll"], b1 = () => ["auto", w, t], Z = () => [w, t], V1 = () => ["", q, F], a1 = () => ["auto", W, w], L1 = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], s1 = () => ["solid", "dashed", "dotted", "double", "none"], M1 = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], h1 = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], Y = () => ["", "0", w], H1 = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], G = () => [W, w];
+  const e = B("colors"), t = B("spacing"), o = B("blur"), r = B("brightness"), s = B("borderColor"), i = B("borderRadius"), c = B("borderSpacing"), d = B("borderWidth"), u = B("contrast"), b = B("grayscale"), m = B("hueRotate"), C = B("invert"), x = B("gap"), p = B("gradientColorStops"), $ = B("gradientColorStopPositions"), M = B("inset"), H = B("margin"), _ = B("opacity"), T = B("padding"), Q = B("saturate"), N = B("scale"), n1 = B("sepia"), w1 = B("skew"), k1 = B("space"), $1 = B("translate"), g1 = () => ["auto", "contain", "none"], f1 = () => ["auto", "hidden", "clip", "visible", "scroll"], b1 = () => ["auto", w, t], Z = () => [w, t], V1 = () => ["", q, F], a1 = () => ["auto", W, w], L1 = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], s1 = () => ["solid", "dashed", "dotted", "double", "none"], M1 = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], h1 = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], Y = () => ["", "0", w], H1 = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], G = () => [W, w];
   return {
     cacheSize: 500,
     separator: ":",
@@ -5078,63 +5083,63 @@ const B = (e) => {
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w": [{
-        border: [c]
+        border: [d]
       }],
       /**
        * Border Width X
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-x": [{
-        "border-x": [c]
+        "border-x": [d]
       }],
       /**
        * Border Width Y
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-y": [{
-        "border-y": [c]
+        "border-y": [d]
       }],
       /**
        * Border Width Start
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-s": [{
-        "border-s": [c]
+        "border-s": [d]
       }],
       /**
        * Border Width End
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-e": [{
-        "border-e": [c]
+        "border-e": [d]
       }],
       /**
        * Border Width Top
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-t": [{
-        "border-t": [c]
+        "border-t": [d]
       }],
       /**
        * Border Width Right
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-r": [{
-        "border-r": [c]
+        "border-r": [d]
       }],
       /**
        * Border Width Bottom
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-b": [{
-        "border-b": [c]
+        "border-b": [d]
       }],
       /**
        * Border Width Left
        * @see https://tailwindcss.com/docs/border-width
        */
       "border-w-l": [{
-        "border-l": [c]
+        "border-l": [d]
       }],
       /**
        * Border Opacity
@@ -5155,7 +5160,7 @@ const B = (e) => {
        * @see https://tailwindcss.com/docs/divide-width
        */
       "divide-x": [{
-        "divide-x": [c]
+        "divide-x": [d]
       }],
       /**
        * Divide Width X Reverse
@@ -5167,7 +5172,7 @@ const B = (e) => {
        * @see https://tailwindcss.com/docs/divide-width
        */
       "divide-y": [{
-        "divide-y": [c]
+        "divide-y": [d]
       }],
       /**
        * Divide Width Y Reverse
@@ -5518,21 +5523,21 @@ const B = (e) => {
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing": [{
-        "border-spacing": [d]
+        "border-spacing": [c]
       }],
       /**
        * Border Spacing X
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing-x": [{
-        "border-spacing-x": [d]
+        "border-spacing-x": [c]
       }],
       /**
        * Border Spacing Y
        * @see https://tailwindcss.com/docs/border-spacing
        */
       "border-spacing-y": [{
-        "border-spacing-y": [d]
+        "border-spacing-y": [c]
       }],
       /**
        * Table Layout

@@ -29,3 +29,6 @@
 
 ## 0.2.10 — 2026-02-25
 - useTheme: Priorität korrigiert — localStorage (User-Entscheidung) hat immer Vorrang vor defaultTheme
+
+## 0.2.11 — 2026-02-25
+- Sidebar: useRoute() abgesichert — kein Crash mehr wenn kein Vue Router registriert
