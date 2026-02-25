@@ -18,7 +18,7 @@ interface DropdownMenuProps {
     /** CSS class for menu items */
     itemClass?: string;
     /** Position of the dropdown */
-    position?: 'left' | 'right';
+    position?: "left" | "right";
 }
 declare function __VLS_template(): {
     trigger?(_: {}): any;
