@@ -14,3 +14,7 @@
 ## 0.2.6 — 2026-02-25
 - Toast: blue-* Farben auf blue-light-* korrigiert (nicht in @theme definiert)
 - InputField, TextareaField, SelectField, MultiSelect: bg-transparent → bg-white (Light Mode Fix)
+
+## 0.2.7 — 2026-02-25
+- @source Direktiven in src/style.css: Alle Komponenten- und Composable-Klassen landen vollständig im dist/style.css
+- postcss.config.js beibehalten (für Library-Build nötig)
