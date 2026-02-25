@@ -55,3 +55,9 @@
 - `src/style.css`: `@import "tailwindcss" source(none)` ersetzt durch `@import "tailwindcss"` mit `@source` auf eigene Komponenten
 - `@utility`-Blöcke (`menu-item*`, `no-scrollbar`, `custom-scrollbar`) nach `@layer utilities` mit expliziten CSS-Selektoren umgebaut
 - `dist/style.css` enthält jetzt alle Utility-Klassen vollständig — Konsumenten brauchen keinen `@source`-Scan mehr auf Lib-Pfade
+
+## 0.2.14 — 2026-02-25
+
+### Geändert
+- `src/style.css`: `body`-Style: `dark:bg-gray-950` entfernt — verhinderte globales `.dark *`-Selektor-Problem das alle Kindelemente überschrieb
+- Body-Hintergrundfarbe jetzt als direkte CSS-Custom-Property (`background-color: var(--color-gray-50)`)

@@ -178,7 +178,8 @@ layer(base);
   }
 
   body {
-    @apply relative font-normal font-outfit z-1 bg-gray-50 dark:bg-gray-950;
+    @apply relative font-normal font-outfit z-1;
+    background-color: var(--color-gray-50);
   }
 }
 
