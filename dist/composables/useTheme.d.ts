@@ -1,6 +1,6 @@
 import { Ref, ComputedRef, InjectionKey } from 'vue';
 
-export type Theme = 'light' | 'dark';
+export type Theme = "light" | "dark";
 export interface ThemeContext {
     theme: Ref<Theme>;
     isDarkMode: ComputedRef<boolean>;

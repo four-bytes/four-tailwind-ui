@@ -1,4 +1,4 @@
-import { defineComponent as V, computed as y, openBlock as l, createElementBlock as a, normalizeClass as h, createTextVNode as D, toDisplayString as g, createCommentVNode as f, createElementVNode as n, useSlots as d1, renderSlot as M, ref as z, watch as c1, Fragment as j, renderList as E, onMounted as l1, onBeforeUnmount as W1, withModifiers as I1, createVNode as R, Transition as r1, withCtx as S, createBlock as I, resolveDynamicComponent as P, resolveComponent as U1, h as A, readonly as K1, Teleport as z1, TransitionGroup as J1, unref as $, onUnmounted as p1, inject as D1, provide as T1, normalizeProps as m1, guardReactiveProps as C1, createSlots as X1, normalizeStyle as U, withDirectives as Q1, vModelText as Y1, withKeys as ee } from "vue";
+import { defineComponent as V, computed as y, openBlock as l, createElementBlock as a, normalizeClass as h, createTextVNode as D, toDisplayString as g, createCommentVNode as f, createElementVNode as n, useSlots as d1, renderSlot as L, ref as z, watch as c1, Fragment as j, renderList as E, onMounted as l1, onBeforeUnmount as W1, withModifiers as I1, createVNode as R, Transition as r1, withCtx as S, createBlock as I, resolveDynamicComponent as P, resolveComponent as U1, h as A, readonly as K1, Teleport as z1, TransitionGroup as J1, unref as k, onUnmounted as p1, inject as D1, provide as T1, normalizeProps as m1, guardReactiveProps as C1, createSlots as X1, normalizeStyle as U, withDirectives as Q1, vModelText as Y1, withKeys as ee } from "vue";
 import { useRoute as te } from "vue-router";
 const re = ["for"], oe = {
   key: 0,
@@ -144,7 +144,7 @@ const re = ["for"], oe = {
       ], 10, ue)) : f("", !0),
       n("div", fe, [
         i.$slots.prefix || e.prefix ? (l(), a("span", be, [
-          M(i.$slots, "prefix", {}, () => [
+          L(i.$slots, "prefix", {}, () => [
             D(g(e.prefix), 1)
           ])
         ])) : f("", !0),
@@ -164,7 +164,7 @@ const re = ["for"], oe = {
           ])
         }, null, 42, he),
         i.$slots.suffix || e.suffix ? (l(), a("span", me, [
-          M(i.$slots, "suffix", {}, () => [
+          L(i.$slots, "suffix", {}, () => [
             D(g(e.suffix), 1)
           ])
         ])) : f("", !0)
@@ -196,8 +196,8 @@ const re = ["for"], oe = {
   setup(e, { emit: t }) {
     const o = e, r = t, s = y(() => `email-${Math.random().toString(36).substr(2, 9)}`), i = z(!1), d = z(""), c = /^[^\s@]+@[^\s@]+\.[^\s@]+$/, u = y(() => o.error ? o.error : i.value && d.value ? d.value : "");
     function b(x) {
-      var p, k;
-      return !x && o.required ? (d.value = ((p = o.errorMessages) == null ? void 0 : p.required) || "Email is required", !1) : x && !c.test(x) ? (d.value = ((k = o.errorMessages) == null ? void 0 : k.invalid) || "Please enter a valid email address", !1) : (d.value = "", !0);
+      var p, $;
+      return !x && o.required ? (d.value = ((p = o.errorMessages) == null ? void 0 : p.required) || "Email is required", !1) : x && !c.test(x) ? (d.value = (($ = o.errorMessages) == null ? void 0 : $.invalid) || "Please enter a valid email address", !1) : (d.value = "", !0);
     }
     function m(x) {
       const p = x.target.value;
@@ -259,7 +259,7 @@ const re = ["for"], oe = {
 }), ke = ["for"], $e = {
   key: 0,
   class: "text-error-500"
-}, Ve = { class: "relative z-20 bg-transparent" }, Me = ["id", "value", "required", "disabled"], Le = {
+}, Ve = { class: "relative z-20 bg-transparent" }, Le = ["id", "value", "required", "disabled"], Me = {
   key: 0,
   value: "",
   disabled: ""
@@ -311,13 +311,13 @@ const re = ["for"], oe = {
             e.modelValue ? "text-gray-800 dark:text-white/90" : ""
           ])
         }, [
-          e.placeholder ? (l(), a("option", Le, g(e.placeholder), 1)) : f("", !0),
+          e.placeholder ? (l(), a("option", Me, g(e.placeholder), 1)) : f("", !0),
           (l(!0), a(j, null, E(e.options, (i) => (l(), a("option", {
             key: i.value,
             value: i.value,
             class: "text-gray-700 dark:bg-gray-900 dark:text-gray-400"
           }, g(i.label), 9, He))), 128))
-        ], 42, Me),
+        ], 42, Le),
         s[1] || (s[1] = n("span", { class: "absolute z-30 text-gray-700 -translate-y-1/2 pointer-events-none right-3 top-1/2 dark:text-gray-400" }, [
           n("svg", {
             class: "stroke-current",
@@ -609,11 +609,11 @@ const re = ["for"], oe = {
     const o = e, r = t, s = z(!1), i = z(null), d = y(() => o.modelValue), c = () => {
       s.value = !s.value;
     }, u = (x) => {
-      const p = d.value.findIndex((B) => B.value === x.value);
-      let k;
-      p === -1 ? k = [...d.value, x] : k = d.value.filter((B, L) => L !== p), r("update:modelValue", k);
+      const p = d.value.findIndex((M) => M.value === x.value);
+      let $;
+      p === -1 ? $ = [...d.value, x] : $ = d.value.filter((M, H) => H !== p), r("update:modelValue", $);
     }, b = (x) => {
-      const p = d.value.filter((k) => k.value !== x.value);
+      const p = d.value.filter(($) => $.value !== x.value);
       r("update:modelValue", p);
     }, m = (x) => d.value.some((p) => p.value === x.value), C = (x) => {
       i.value && !i.value.contains(x.target) && (s.value = !1);
@@ -636,7 +636,7 @@ const re = ["for"], oe = {
         ref: i
       }, [
         n("div", {
-          onClick: p[0] || (p[0] = (k) => !e.disabled && c()),
+          onClick: p[0] || (p[0] = ($) => !e.disabled && c()),
           class: h(["min-h-11 flex items-center w-full appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800", [
             { "text-gray-800 dark:text-white/90": s.value },
             { "cursor-not-allowed opacity-50": e.disabled },
@@ -645,14 +645,14 @@ const re = ["for"], oe = {
         }, [
           d.value.length === 0 ? (l(), a("span", Ye, g(e.placeholder || "Select items..."), 1)) : f("", !0),
           n("div", et, [
-            (l(!0), a(j, null, E(d.value, (k) => (l(), a("div", {
-              key: k.value,
+            (l(!0), a(j, null, E(d.value, ($) => (l(), a("div", {
+              key: $.value,
               class: "group flex items-center justify-center h-[30px] rounded-full border-[0.7px] border-transparent bg-gray-100 py-1 pl-2.5 pr-2 text-sm text-gray-800 hover:border-gray-200 dark:bg-gray-800 dark:text-white/90 dark:hover:border-gray-800"
             }, [
-              n("span", null, g(k.label), 1),
+              n("span", null, g($.label), 1),
               e.disabled ? f("", !0) : (l(), a("button", {
                 key: 0,
-                onClick: I1((B) => b(k), ["stop"]),
+                onClick: I1((M) => b($), ["stop"]),
                 class: "pl-2 text-gray-500 cursor-pointer group-hover:text-gray-400 dark:text-gray-400",
                 "aria-label": "Remove item"
               }, [...p[1] || (p[1] = [
@@ -701,15 +701,15 @@ const re = ["for"], oe = {
           default: S(() => [
             s.value ? (l(), a("div", rt, [
               n("ul", ot, [
-                (l(!0), a(j, null, E(e.options, (k) => (l(), a("li", {
-                  key: k.value,
-                  onClick: (B) => u(k),
-                  class: h(["relative flex items-center w-full px-3 py-2 cursor-pointer first:rounded-t-lg last:rounded-b-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-white", { "bg-gray-50 dark:bg-white/[0.03]": m(k) }]),
+                (l(!0), a(j, null, E(e.options, ($) => (l(), a("li", {
+                  key: $.value,
+                  onClick: (M) => u($),
+                  class: h(["relative flex items-center w-full px-3 py-2 cursor-pointer first:rounded-t-lg last:rounded-b-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-white", { "bg-gray-50 dark:bg-white/[0.03]": m($) }]),
                   role: "option",
-                  "aria-selected": m(k)
+                  "aria-selected": m($)
                 }, [
-                  n("span", nt, g(k.label), 1),
-                  m(k) ? (l(), a("svg", at, [...p[3] || (p[3] = [
+                  n("span", nt, g($.label), 1),
+                  m($) ? (l(), a("svg", at, [...p[3] || (p[3] = [
                     n("path", {
                       "stroke-linecap": "round",
                       "stroke-linejoin": "round",
@@ -842,7 +842,7 @@ const re = ["for"], oe = {
       ])])) : e.startIcon ? (l(), a("span", ht, [
         (l(), I(P(e.startIcon)))
       ])) : f("", !0),
-      M(c.$slots, "default"),
+      L(c.$slots, "default"),
       e.endIcon && !e.loading ? (l(), a("span", mt, [
         (l(), I(P(e.endIcon)))
       ])) : f("", !0)
@@ -988,10 +988,10 @@ const re = ["for"], oe = {
 }), Vt = {
   key: 0,
   class: "mr-1"
-}, Mt = {
+}, Lt = {
   key: 1,
   class: "ml-1"
-}, Lt = "inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium capitalize", Wl = /* @__PURE__ */ V({
+}, Mt = "inline-flex items-center px-2.5 py-0.5 justify-center gap-1 rounded-full font-medium capitalize", Wl = /* @__PURE__ */ V({
   __name: "Badge",
   props: {
     variant: { default: "light" },
@@ -1025,13 +1025,13 @@ const re = ["for"], oe = {
       }
     }, s = y(() => o[t.size]), i = y(() => r[t.variant][t.color]);
     return (d, c) => (l(), a("span", {
-      class: h([Lt, s.value, i.value])
+      class: h([Mt, s.value, i.value])
     }, [
       e.startIcon ? (l(), a("span", Vt, [
         (l(), I(P(e.startIcon)))
       ])) : f("", !0),
-      M(d.$slots, "default"),
-      e.endIcon ? (l(), a("span", Mt, [
+      L(d.$slots, "default"),
+      e.endIcon ? (l(), a("span", Lt, [
         (l(), I(P(e.endIcon)))
       ])) : f("", !0)
     ], 2));
@@ -1171,13 +1171,13 @@ const Ul = /* @__PURE__ */ V({
           "move-class": "transition duration-300 ease-out"
         }, {
           default: S(() => [
-            (l(!0), a(j, null, E($(t), (d) => (l(), I(St, {
+            (l(!0), a(j, null, E(k(t), (d) => (l(), I(St, {
               key: d.id,
               type: d.type,
               title: d.title,
               message: d.message,
               dismissible: !0,
-              onDismiss: (c) => $(o)(d.id)
+              onDismiss: (c) => k(o)(d.id)
             }, null, 8, ["type", "title", "message", "onDismiss"]))), 128))
           ]),
           _: 1
@@ -1248,7 +1248,7 @@ const Ul = /* @__PURE__ */ V({
                   key: 0,
                   class: h(["relative z-10", s.value])
                 }, [
-                  M(u.$slots, "default")
+                  L(u.$slots, "default")
                 ], 2)) : f("", !0)
               ]),
               _: 3
@@ -1315,7 +1315,7 @@ const Ul = /* @__PURE__ */ V({
             e.subtitle ? (l(), a("p", At, g(e.subtitle), 1)) : f("", !0)
           ]),
           n("div", null, [
-            M(u.$slots, "default")
+            L(u.$slots, "default")
           ]),
           n("div", Ft, [
             n("button", {
@@ -1346,7 +1346,7 @@ const Ul = /* @__PURE__ */ V({
               ])])) : f("", !0),
               D(" " + g(e.loading ? e.loadingText : e.confirmText), 1)
             ], 10, Ot),
-            M(u.$slots, "extra-buttons")
+            L(u.$slots, "extra-buttons")
           ])
         ])
       ]),
@@ -1443,7 +1443,7 @@ const Ul = /* @__PURE__ */ V({
             ])]))
           ], 2)
         ])) : f("", !0),
-        M(d.$slots, "default")
+        L(d.$slots, "default")
       ]),
       _: 3
     }, 8, ["modelValue", "title", "subtitle", "confirmText", "cancelText", "loading", "variant"]));
@@ -1451,8 +1451,8 @@ const Ul = /* @__PURE__ */ V({
 }), E1 = Symbol("sidebar");
 function Xt(e = {}) {
   const { initialExpanded: t = !0, mobileBreakpoint: o = 768 } = e, r = z(t), s = z(!1), i = z(!1), d = z(!1), c = z(null), u = z(null), b = () => {
-    const H = window.innerWidth < o;
-    i.value = H, H || (s.value = !1);
+    const _ = window.innerWidth < o;
+    i.value = _, _ || (s.value = !1);
   };
   l1(() => {
     b(), window.addEventListener("resize", b);
@@ -1465,13 +1465,13 @@ function Xt(e = {}) {
     s.value = !s.value;
   }, x = () => {
     s.value = !1;
-  }, p = (H) => {
-    d.value = H;
-  }, k = (H) => {
-    c.value = H;
-  }, B = (H) => {
-    u.value = u.value === H ? null : H;
-  }, L = {
+  }, p = (_) => {
+    d.value = _;
+  }, $ = (_) => {
+    c.value = _;
+  }, M = (_) => {
+    u.value = u.value === _ ? null : _;
+  }, H = {
     isExpanded: y(() => i.value ? !1 : r.value),
     isMobileOpen: s,
     isHovered: d,
@@ -1481,10 +1481,10 @@ function Xt(e = {}) {
     toggleMobileSidebar: C,
     closeMobileSidebar: x,
     setIsHovered: p,
-    setActiveItem: k,
-    toggleSubmenu: B
+    setActiveItem: $,
+    toggleSubmenu: M
   };
-  return T1(E1, L), L;
+  return T1(E1, H), H;
 }
 function u1() {
   const e = D1(E1);
@@ -1526,10 +1526,10 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
       class: h([
         "fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 dark:text-gray-100 h-screen transition-all duration-300 ease-in-out z-[9999] border-r border-gray-200",
         {
-          "lg:w-[290px]": $(o) || $(r) || $(s),
-          "lg:w-[90px]": !$(o) && !$(s),
-          "translate-x-0 w-[290px]": $(r),
-          "-translate-x-full": !$(r),
+          "lg:w-[290px]": k(o) || k(r) || k(s),
+          "lg:w-[90px]": !k(o) && !k(s),
+          "translate-x-0 w-[290px]": k(r),
+          "-translate-x-full": !k(r),
           "lg:translate-x-0": !0
         }
       ]),
@@ -1539,29 +1539,29 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
       n("div", {
         class: h([
           "py-8 flex",
-          !$(o) && !$(s) ? "lg:justify-center" : "justify-start"
+          !k(o) && !k(s) ? "lg:justify-center" : "justify-start"
         ])
       }, [
-        M(m.$slots, "logo", {
-          isExpanded: $(o),
-          isHovered: $(s),
-          isMobileOpen: $(r)
+        L(m.$slots, "logo", {
+          isExpanded: k(o),
+          isHovered: k(s),
+          isMobileOpen: k(r)
         }, void 0, !0)
       ], 2),
       n("div", Qt, [
         n("nav", Yt, [
-          M(m.$slots, "default", {
-            isExpanded: $(o),
-            isHovered: $(s),
-            isMobileOpen: $(r),
-            isCollapsed: !$(o) && !$(s) && !$(r)
+          L(m.$slots, "default", {
+            isExpanded: k(o),
+            isHovered: k(s),
+            isMobileOpen: k(r),
+            isCollapsed: !k(o) && !k(s) && !k(r)
           }, void 0, !0)
         ]),
-        $(o) || $(s) || $(r) ? (l(), a("div", e0, [
-          M(m.$slots, "footer", {
-            isExpanded: $(o),
-            isHovered: $(s),
-            isMobileOpen: $(r)
+        k(o) || k(s) || k(r) ? (l(), a("div", e0, [
+          L(m.$slots, "footer", {
+            isExpanded: k(o),
+            isHovered: k(s),
+            isMobileOpen: k(r)
           }, void 0, !0)
         ])) : f("", !0)
       ])
@@ -1602,10 +1602,10 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
             type: "button",
             onClick: i,
             class: h(["flex items-center justify-center w-10 h-10 text-gray-500 border-gray-200 rounded-lg z-[9999] dark:border-gray-800 dark:text-gray-400 lg:h-11 lg:w-11 lg:border", [
-              $(r) ? "lg:bg-transparent dark:lg:bg-transparent bg-gray-100 dark:bg-gray-800" : ""
+              k(r) ? "lg:bg-transparent dark:lg:bg-transparent bg-gray-100 dark:bg-gray-800" : ""
             ]])
           }, [
-            $(r) ? (l(), a("svg", a0, [...u[0] || (u[0] = [
+            k(r) ? (l(), a("svg", a0, [...u[0] || (u[0] = [
               n("path", {
                 "fill-rule": "evenodd",
                 "clip-rule": "evenodd",
@@ -1621,7 +1621,7 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
               }, null, -1)
             ])]))
           ], 2),
-          M(c.$slots, "logo"),
+          L(c.$slots, "logo"),
           n("button", {
             type: "button",
             onClick: d,
@@ -1643,13 +1643,13 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
             ], -1)
           ])]),
           n("div", i0, [
-            M(c.$slots, "center")
+            L(c.$slots, "center")
           ])
         ]),
         n("div", {
           class: h([[s.value ? "flex" : "hidden"], "items-center justify-between w-full gap-4 px-5 py-4 shadow-theme-md lg:flex lg:justify-end lg:px-0 lg:shadow-none"])
         }, [
-          M(c.$slots, "actions")
+          L(c.$slots, "actions")
         ], 2)
       ])
     ]));
@@ -1667,11 +1667,11 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
       "leave-to-class": "opacity-0"
     }, {
       default: S(() => [
-        $(o) ? (l(), a("div", {
+        k(o) ? (l(), a("div", {
           key: 0,
           class: "fixed inset-0 bg-gray-900/50 z-[9998] lg:hidden",
           onClick: s[0] || (s[0] = //@ts-ignore
-          (...i) => $(t) && $(t)(...i))
+          (...i) => k(t) && k(t)(...i))
         })) : f("", !0)
       ]),
       _: 1
@@ -1682,40 +1682,40 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
   setup(e) {
     const { isExpanded: t, isHovered: o } = u1();
     return (r, s) => (l(), a("div", u0, [
-      M(r.$slots, "sidebar", {}, () => [
+      L(r.$slots, "sidebar", {}, () => [
         R(r0, null, {
           logo: S((i) => [
-            M(r.$slots, "sidebar-logo", m1(C1(i)))
+            L(r.$slots, "sidebar-logo", m1(C1(i)))
           ]),
           default: S((i) => [
-            M(r.$slots, "sidebar-nav", m1(C1(i)))
+            L(r.$slots, "sidebar-nav", m1(C1(i)))
           ]),
           footer: S((i) => [
-            M(r.$slots, "sidebar-footer", m1(C1(i)))
+            L(r.$slots, "sidebar-footer", m1(C1(i)))
           ]),
           _: 3
         })
       ]),
       R(c0),
       n("div", {
-        class: h(["flex-1 transition-all duration-300 ease-in-out", [$(t) || $(o) ? "lg:ml-[290px]" : "lg:ml-[90px]"]])
+        class: h(["flex-1 transition-all duration-300 ease-in-out", [k(t) || k(o) ? "lg:ml-[290px]" : "lg:ml-[90px]"]])
       }, [
-        M(r.$slots, "header", {}, () => [
+        L(r.$slots, "header", {}, () => [
           R(d0, null, {
             logo: S(() => [
-              M(r.$slots, "header-logo")
+              L(r.$slots, "header-logo")
             ]),
             center: S(() => [
-              M(r.$slots, "header-center")
+              L(r.$slots, "header-center")
             ]),
             actions: S(() => [
-              M(r.$slots, "header-actions")
+              L(r.$slots, "header-actions")
             ]),
             _: 3
           })
         ]),
         n("div", g0, [
-          M(r.$slots, "default")
+          L(r.$slots, "default")
         ])
       ], 2)
     ]));
@@ -1731,11 +1731,15 @@ const Qt = { class: "flex flex-col overflow-y-auto duration-300 ease-linear no-s
     return Xt({
       initialExpanded: t.initialExpanded,
       mobileBreakpoint: t.mobileBreakpoint
-    }), (o, r) => M(o.$slots, "default");
+    }), (o, r) => L(o.$slots, "default");
   }
 }), G1 = Symbol("theme");
 function f0(e = {}) {
-  const { storageKey: t = "theme", defaultTheme: o = "light", syncWithSystem: r = !0 } = e, s = z(o), i = z(!1), d = y(() => s.value === "dark"), c = () => {
+  const {
+    storageKey: t = "theme",
+    defaultTheme: o = "light",
+    syncWithSystem: r = !0
+  } = e, s = z(o), i = z(!1), d = y(() => s.value === "dark"), c = () => {
     s.value = s.value === "light" ? "dark" : "light";
   }, u = (C) => {
     s.value = C;
@@ -1743,12 +1747,13 @@ function f0(e = {}) {
     C === "dark" ? document.documentElement.classList.add("dark") : document.documentElement.classList.remove("dark");
   };
   l1(() => {
+    var p;
     const C = localStorage.getItem(t);
-    let x = o;
-    C && (C === "light" || C === "dark") ? x = C : r && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches && (x = "dark"), s.value = x, b(x), i.value = !0, r && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (p) => {
+    let x;
+    C === "light" || C === "dark" ? x = C : r && ((p = window.matchMedia) != null && p.call(window, "(prefers-color-scheme: dark)").matches) ? x = "dark" : x = o, s.value = x, b(x), i.value = !0, r && window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ($) => {
       if (!localStorage.getItem(t)) {
-        const k = p.matches ? "dark" : "light";
-        s.value = k, b(k);
+        const M = $.matches ? "dark" : "light";
+        s.value = M, b(M);
       }
     });
   }), c1([s, i], ([C, x]) => {
@@ -1765,7 +1770,9 @@ function f0(e = {}) {
 function b0() {
   const e = D1(G1);
   if (!e)
-    throw new Error("useTheme must be used within a component that has ThemeProvider as an ancestor");
+    throw new Error(
+      "useTheme must be used within a component that has ThemeProvider as an ancestor"
+    );
   return e;
 }
 const Ql = /* @__PURE__ */ V({
@@ -1781,7 +1788,7 @@ const Ql = /* @__PURE__ */ V({
       storageKey: t.storageKey,
       defaultTheme: t.defaultTheme,
       syncWithSystem: t.syncWithSystem
-    }), (o, r) => M(o.$slots, "default");
+    }), (o, r) => L(o.$slots, "default");
   }
 }), h0 = ["aria-label"], Yl = /* @__PURE__ */ V({
   __name: "ThemeToggler",
@@ -1789,11 +1796,11 @@ const Ql = /* @__PURE__ */ V({
     const { isDarkMode: t, toggleTheme: o } = b0();
     return (r, s) => (l(), a("button", {
       type: "button",
-      "aria-label": $(t) ? "Switch to light mode" : "Switch to dark mode",
+      "aria-label": k(t) ? "Switch to light mode" : "Switch to dark mode",
       class: "relative flex items-center justify-center text-gray-500 transition-colors bg-white border border-gray-200 rounded-full hover:text-dark-900 h-11 w-11 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
       onClick: s[0] || (s[0] = I1(
         //@ts-ignore
-        (...i) => $(o) && $(o)(...i),
+        (...i) => k(o) && k(o)(...i),
         ["prevent"]
       ))
     }, [...s[1] || (s[1] = [
@@ -1910,7 +1917,7 @@ const Ql = /* @__PURE__ */ V({
       ])
     }, [
       e.title || t.$slots.header ? (l(), a("div", C0, [
-        M(t.$slots, "header", {}, () => [
+        L(t.$slots, "header", {}, () => [
           n("h3", x0, g(e.title), 1),
           e.description ? (l(), a("p", v0, g(e.description), 1)) : f("", !0)
         ])
@@ -1924,11 +1931,11 @@ const Ql = /* @__PURE__ */ V({
         n("div", {
           class: h(e.contentClass)
         }, [
-          M(t.$slots, "default")
+          L(t.$slots, "default")
         ], 2)
       ], 2),
       t.$slots.footer ? (l(), a("div", p0, [
-        M(t.$slots, "footer")
+        L(t.$slots, "footer")
       ])) : f("", !0)
     ], 2));
   }
@@ -2214,7 +2221,7 @@ function q1(e, t, o) {
 const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2" }, k0 = { class: "relative w-40 h-24" }, $0 = {
   viewBox: "0 0 160 90",
   class: "w-full h-full"
-}, V0 = ["stroke-dashoffset"], M0 = { class: "absolute inset-0 flex flex-col items-center justify-end pb-0" }, L0 = { class: "flex items-baseline gap-0.5" }, H0 = { class: "text-xs text-gray-400 dark:text-gray-500" }, _0 = {
+}, V0 = ["stroke-dashoffset"], L0 = { class: "absolute inset-0 flex flex-col items-center justify-end pb-0" }, M0 = { class: "flex items-baseline gap-0.5" }, H0 = { class: "text-xs text-gray-400 dark:text-gray-500" }, _0 = {
   key: 0,
   class: "text-xs text-gray-400 dark:text-gray-500 mt-1"
 }, B0 = {
@@ -2273,8 +2280,8 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
                 "stroke-dashoffset": b.value
               }, null, 10, V0)
             ])),
-            n("div", M0, [
-              n("div", L0, [
+            n("div", L0, [
+              n("div", M0, [
                 n("span", {
                   class: h(`text-2xl font-bold tabular-nums ${c.value.textLight} ${c.value.textDark}`)
                 }, g(i.value), 3),
@@ -2286,7 +2293,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
         ]),
         r.value ? (l(), a("div", B0, [
           n("div", Z0, [
-            M(m.$slots, "details", {}, () => [
+            L(m.$slots, "details", {}, () => [
               (l(!0), a(j, null, E(e.details, (x, p) => (l(), a("div", {
                 key: p,
                 class: "flex items-center justify-between"
@@ -2426,7 +2433,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
             n("div", {
               class: h(`w-8 h-8 rounded-lg ${o.value.iconBg} ${o.value.iconBgDark} flex items-center justify-center`)
             }, [
-              M(s.$slots, "icon")
+              L(s.$slots, "icon")
             ], 2),
             n("span", U0, g(e.label), 1),
             e.pulse ? (l(), a("div", {
@@ -2494,7 +2501,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
           ])
         ]))), 128)),
         s.$slots.footer ? (l(), a("div", er, [
-          M(s.$slots, "footer")
+          L(s.$slots, "footer")
         ])) : f("", !0)
       ]),
       _: 3
@@ -2549,8 +2556,8 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
           class: h(`absolute inset-0 bg-gradient-to-br ${r.value.gradient} to-transparent`)
         }, null, 2),
         n("div", tr, [
-          $(o).header ? (l(), a("div", rr, [
-            M(b.$slots, "header")
+          k(o).header ? (l(), a("div", rr, [
+            L(b.$slots, "header")
           ])) : f("", !0),
           e.items.length > 0 ? (l(), a("div", {
             key: 1,
@@ -2558,7 +2565,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
             style: U({ height: `${e.height}px` })
           }, [
             (l(!0), a(j, null, E(e.items, (C, x) => {
-              var p, k;
+              var p, $;
               return l(), a("div", {
                 key: x,
                 class: h([
@@ -2574,7 +2581,7 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
                   }, null, 6)
                 ]),
                 n("span", {
-                  class: h(`text-[9px] leading-none mt-1.5 shrink-0 ${C.highlighted ? `${r.value.textLight} ${r.value.textDark} font-medium` : C.group === ((k = e.items[e.items.length - 1]) == null ? void 0 : k.group) ? "text-gray-500 dark:text-gray-500" : "text-gray-300 dark:text-gray-500"}`)
+                  class: h(`text-[9px] leading-none mt-1.5 shrink-0 ${C.highlighted ? `${r.value.textLight} ${r.value.textDark} font-medium` : C.group === (($ = e.items[e.items.length - 1]) == null ? void 0 : $.group) ? "text-gray-500 dark:text-gray-500" : "text-gray-300 dark:text-gray-500"}`)
                 }, g(C.label), 3)
               ], 2);
             }), 128))
@@ -2609,8 +2616,8 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
           class: h(`absolute inset-0 bg-gradient-to-br ${r.value.gradient} to-transparent`)
         }, null, 2),
         n("div", ar, [
-          $(o).header ? (l(), a("div", sr, [
-            M(s.$slots, "header")
+          k(o).header ? (l(), a("div", sr, [
+            L(s.$slots, "header")
           ])) : f("", !0),
           n("div", ir, [
             (l(!0), a(j, null, E(e.rows, (d, c) => (l(), a("div", {
@@ -2623,8 +2630,8 @@ const y0 = { class: "relative p-4 flex flex-col items-center" }, w0 = { class: "
               }, g(d.value), 3)
             ], 2))), 128))
           ]),
-          $(o).footer ? (l(), a("div", cr, [
-            M(s.$slots, "footer")
+          k(o).footer ? (l(), a("div", cr, [
+            L(s.$slots, "footer")
           ])) : f("", !0)
         ])
       ]),
@@ -2725,7 +2732,7 @@ const Cr = ["onClick"], dn = /* @__PURE__ */ V({
         onClick: i,
         class: h(e.buttonClass)
       }, [
-        M(u.$slots, "trigger", {}, () => [
+        L(u.$slots, "trigger", {}, () => [
           b[0] || (b[0] = n("svg", {
             class: "fill-current",
             width: "24",
@@ -2755,7 +2762,7 @@ const Cr = ["onClick"], dn = /* @__PURE__ */ V({
             key: 0,
             class: h(e.menuClass)
           }, [
-            M(u.$slots, "menu", { close: d }, () => [
+            L(u.$slots, "menu", { close: d }, () => [
               (l(!0), a(j, null, E(e.items, (m, C) => (l(), a("button", {
                 key: C,
                 type: "button",
@@ -2809,7 +2816,7 @@ function $r(e, t) {
     }, null, -1)
   ])]);
 }
-const Vr = /* @__PURE__ */ v(wr, [["render", $r]]), Mr = {}, Lr = {
+const Vr = /* @__PURE__ */ v(wr, [["render", $r]]), Lr = {}, Mr = {
   width: "20",
   height: "20",
   viewBox: "0 0 20 20",
@@ -2817,7 +2824,7 @@ const Vr = /* @__PURE__ */ v(wr, [["render", $r]]), Mr = {}, Lr = {
   xmlns: "http://www.w3.org/2000/svg"
 };
 function Hr(e, t) {
-  return l(), a("svg", Lr, [...t[0] || (t[0] = [
+  return l(), a("svg", Mr, [...t[0] || (t[0] = [
     n("path", {
       "fill-rule": "evenodd",
       "clip-rule": "evenodd",
@@ -2826,7 +2833,7 @@ function Hr(e, t) {
     }, null, -1)
   ])]);
 }
-const _r = /* @__PURE__ */ v(Mr, [["render", Hr]]), Br = {}, Zr = {
+const _r = /* @__PURE__ */ v(Lr, [["render", Hr]]), Br = {}, Zr = {
   width: "24",
   height: "24",
   viewBox: "0 0 24 24",
@@ -3041,7 +3048,7 @@ const k5 = /* @__PURE__ */ v(p5, [["render", w5]]), $5 = {}, V5 = {
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
 };
-function M5(e, t) {
+function L5(e, t) {
   return l(), a("svg", V5, [...t[0] || (t[0] = [
     n("path", {
       "fill-rule": "evenodd",
@@ -3051,7 +3058,7 @@ function M5(e, t) {
     }, null, -1)
   ])]);
 }
-const L5 = /* @__PURE__ */ v($5, [["render", M5]]), H5 = {}, _5 = {
+const M5 = /* @__PURE__ */ v($5, [["render", L5]]), H5 = {}, _5 = {
   width: "24",
   height: "24",
   viewBox: "0 0 24 24",
@@ -3270,7 +3277,7 @@ function Vo(e, t) {
     }, null, -1)
   ])]);
 }
-const Mo = /* @__PURE__ */ v(ko, [["render", Vo]]), Lo = {}, Ho = {
+const Lo = /* @__PURE__ */ v(ko, [["render", Vo]]), Mo = {}, Ho = {
   width: "24",
   height: "24",
   viewBox: "0 0 24 24",
@@ -3287,7 +3294,7 @@ function _o(e, t) {
     }, null, -1)
   ])]);
 }
-const Bo = /* @__PURE__ */ v(Lo, [["render", _o]]), Zo = {}, So = {
+const Bo = /* @__PURE__ */ v(Mo, [["render", _o]]), Zo = {}, So = {
   width: "16",
   height: "16",
   viewBox: "0 0 16 16",
@@ -3491,15 +3498,15 @@ function k2(e, t) {
     }, null, -1)
   ])]);
 }
-const $2 = /* @__PURE__ */ v(y2, [["render", k2]]), V2 = {}, M2 = {
+const $2 = /* @__PURE__ */ v(y2, [["render", k2]]), V2 = {}, L2 = {
   width: "20",
   height: "20",
   viewBox: "0 0 20 20",
   fill: "none",
   xmlns: "http://www.w3.org/2000/svg"
 };
-function L2(e, t) {
-  return l(), a("svg", M2, [...t[0] || (t[0] = [
+function M2(e, t) {
+  return l(), a("svg", L2, [...t[0] || (t[0] = [
     n("path", {
       "fill-rule": "evenodd",
       "clip-rule": "evenodd",
@@ -3508,7 +3515,7 @@ function L2(e, t) {
     }, null, -1)
   ])]);
 }
-const H2 = /* @__PURE__ */ v(V2, [["render", L2]]), _2 = {}, B2 = {
+const H2 = /* @__PURE__ */ v(V2, [["render", M2]]), _2 = {}, B2 = {
   width: "24",
   height: "24",
   viewBox: "0 0 24 24",
@@ -3593,7 +3600,7 @@ const O2 = /* @__PURE__ */ v(P2, [["render", F2]]), B1 = /* @__PURE__ */ Object.
   DraftIcon: h5,
   ErrorHexaIcon: v5,
   ErrorIcon: k5,
-  FlagIcon: L5,
+  FlagIcon: M5,
   FolderIcon: Z5,
   GridIcon: D5,
   HomeIcon: G5,
@@ -3606,7 +3613,7 @@ const O2 = /* @__PURE__ */ v(P2, [["render", F2]]), B1 = /* @__PURE__ */ Object.
   MailBox: bo,
   MailIcon: xo,
   MenuIcon: wo,
-  Message2Line: Mo,
+  Message2Line: Lo,
   PageIcon: Bo,
   PaperclipIcon: zo,
   PieChartIcon: Eo,
@@ -3832,26 +3839,26 @@ const y1 = "-", el = (e) => {
   } = e, r = t.length === 1, s = t[0], i = t.length, d = (c) => {
     const u = [];
     let b = 0, m = 0, C;
-    for (let L = 0; L < c.length; L++) {
-      let H = c[L];
+    for (let H = 0; H < c.length; H++) {
+      let _ = c[H];
       if (b === 0) {
-        if (H === s && (r || c.slice(L, L + i) === t)) {
-          u.push(c.slice(m, L)), m = L + i;
+        if (_ === s && (r || c.slice(H, H + i) === t)) {
+          u.push(c.slice(m, H)), m = H + i;
           continue;
         }
-        if (H === "/") {
-          C = L;
+        if (_ === "/") {
+          C = H;
           continue;
         }
       }
-      H === "[" ? b++ : H === "]" && b--;
+      _ === "[" ? b++ : _ === "]" && b--;
     }
-    const x = u.length === 0 ? c : c.substring(m), p = x.startsWith(F1), k = p ? x.substring(1) : x, B = C && C > m ? C - m : void 0;
+    const x = u.length === 0 ? c : c.substring(m), p = x.startsWith(F1), $ = p ? x.substring(1) : x, M = C && C > m ? C - m : void 0;
     return {
       modifiers: u,
       hasImportantModifier: p,
-      baseClassName: k,
-      maybePostfixModifierPosition: B
+      baseClassName: $,
+      maybePostfixModifierPosition: M
     };
   };
   return o ? (c) => o({
@@ -3884,26 +3891,26 @@ const y1 = "-", el = (e) => {
       baseClassName: x,
       maybePostfixModifierPosition: p
     } = o(b);
-    let k = !!p, B = r(k ? x.substring(0, p) : x);
-    if (!B) {
-      if (!k) {
+    let $ = !!p, M = r($ ? x.substring(0, p) : x);
+    if (!M) {
+      if (!$) {
         c = b + (c.length > 0 ? " " + c : c);
         continue;
       }
-      if (B = r(x), !B) {
+      if (M = r(x), !M) {
         c = b + (c.length > 0 ? " " + c : c);
         continue;
       }
-      k = !1;
+      $ = !1;
     }
-    const L = sl(m).join(":"), H = C ? L + F1 : L, T = H + B;
+    const H = sl(m).join(":"), _ = C ? H + F1 : H, T = _ + M;
     if (i.includes(T))
       continue;
     i.push(T);
-    const Q = s(B, k);
+    const Q = s(M, $);
     for (let N = 0; N < Q.length; ++N) {
       const n1 = Q[N];
-      i.push(H + n1);
+      i.push(_ + n1);
     }
     c = b + (c.length > 0 ? " " + c : c);
   }
@@ -3940,19 +3947,19 @@ function gl(e, ...t) {
     return i(ul.apply(null, arguments));
   };
 }
-const _ = (e) => {
+const B = (e) => {
   const t = (o) => o[e] || [];
   return t.isThemeGetter = !0, t;
-}, R1 = /^\[(?:([a-z-]+):)?(.+)\]$/i, fl = /^\d+\/\d+$/, bl = /* @__PURE__ */ new Set(["px", "full", "screen"]), hl = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, ml = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, Cl = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/, xl = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, vl = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, q = (e) => W(e) || bl.has(e) || fl.test(e), F = (e) => X(e, "length", Ll), W = (e) => !!e && !Number.isNaN(Number(e)), x1 = (e) => X(e, "number", W), e1 = (e) => !!e && Number.isInteger(Number(e)), pl = (e) => e.endsWith("%") && W(e.slice(0, -1)), w = (e) => R1.test(e), O = (e) => hl.test(e), yl = /* @__PURE__ */ new Set(["length", "size", "percentage"]), wl = (e) => X(e, yl, N1), kl = (e) => X(e, "position", N1), $l = /* @__PURE__ */ new Set(["image", "url"]), Vl = (e) => X(e, $l, _l), Ml = (e) => X(e, "", Hl), t1 = () => !0, X = (e, t, o) => {
+}, R1 = /^\[(?:([a-z-]+):)?(.+)\]$/i, fl = /^\d+\/\d+$/, bl = /* @__PURE__ */ new Set(["px", "full", "screen"]), hl = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/, ml = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/, Cl = /^(rgba?|hsla?|hwb|(ok)?(lab|lch)|color-mix)\(.+\)$/, xl = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/, vl = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/, q = (e) => W(e) || bl.has(e) || fl.test(e), F = (e) => X(e, "length", Ml), W = (e) => !!e && !Number.isNaN(Number(e)), x1 = (e) => X(e, "number", W), e1 = (e) => !!e && Number.isInteger(Number(e)), pl = (e) => e.endsWith("%") && W(e.slice(0, -1)), w = (e) => R1.test(e), O = (e) => hl.test(e), yl = /* @__PURE__ */ new Set(["length", "size", "percentage"]), wl = (e) => X(e, yl, N1), kl = (e) => X(e, "position", N1), $l = /* @__PURE__ */ new Set(["image", "url"]), Vl = (e) => X(e, $l, _l), Ll = (e) => X(e, "", Hl), t1 = () => !0, X = (e, t, o) => {
   const r = R1.exec(e);
   return r ? r[1] ? typeof t == "string" ? r[1] === t : t.has(r[1]) : o(r[2]) : !1;
-}, Ll = (e) => (
+}, Ml = (e) => (
   // `colorFunctionRegex` check is necessary because color functions can have percentages in them which which would be incorrectly classified as lengths.
   // For example, `hsl(0 0% 0%)` would be classified as a length without this check.
   // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
   ml.test(e) && !Cl.test(e)
 ), N1 = () => !1, Hl = (e) => xl.test(e), _l = (e) => vl.test(e), Bl = () => {
-  const e = _("colors"), t = _("spacing"), o = _("blur"), r = _("brightness"), s = _("borderColor"), i = _("borderRadius"), d = _("borderSpacing"), c = _("borderWidth"), u = _("contrast"), b = _("grayscale"), m = _("hueRotate"), C = _("invert"), x = _("gap"), p = _("gradientColorStops"), k = _("gradientColorStopPositions"), B = _("inset"), L = _("margin"), H = _("opacity"), T = _("padding"), Q = _("saturate"), N = _("scale"), n1 = _("sepia"), w1 = _("skew"), k1 = _("space"), $1 = _("translate"), g1 = () => ["auto", "contain", "none"], f1 = () => ["auto", "hidden", "clip", "visible", "scroll"], b1 = () => ["auto", w, t], Z = () => [w, t], V1 = () => ["", q, F], a1 = () => ["auto", W, w], M1 = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], s1 = () => ["solid", "dashed", "dotted", "double", "none"], L1 = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], h1 = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], Y = () => ["", "0", w], H1 = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], G = () => [W, w];
+  const e = B("colors"), t = B("spacing"), o = B("blur"), r = B("brightness"), s = B("borderColor"), i = B("borderRadius"), d = B("borderSpacing"), c = B("borderWidth"), u = B("contrast"), b = B("grayscale"), m = B("hueRotate"), C = B("invert"), x = B("gap"), p = B("gradientColorStops"), $ = B("gradientColorStopPositions"), M = B("inset"), H = B("margin"), _ = B("opacity"), T = B("padding"), Q = B("saturate"), N = B("scale"), n1 = B("sepia"), w1 = B("skew"), k1 = B("space"), $1 = B("translate"), g1 = () => ["auto", "contain", "none"], f1 = () => ["auto", "hidden", "clip", "visible", "scroll"], b1 = () => ["auto", w, t], Z = () => [w, t], V1 = () => ["", q, F], a1 = () => ["auto", W, w], L1 = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], s1 = () => ["solid", "dashed", "dotted", "double", "none"], M1 = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], h1 = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], Y = () => ["", "0", w], H1 = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], G = () => [W, w];
   return {
     cacheSize: 500,
     separator: ":",
@@ -4075,7 +4082,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/object-position
        */
       "object-position": [{
-        object: [...M1(), w]
+        object: [...L1(), w]
       }],
       /**
        * Overflow
@@ -4129,63 +4136,63 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       inset: [{
-        inset: [B]
+        inset: [M]
       }],
       /**
        * Right / Left
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-x": [{
-        "inset-x": [B]
+        "inset-x": [M]
       }],
       /**
        * Top / Bottom
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       "inset-y": [{
-        "inset-y": [B]
+        "inset-y": [M]
       }],
       /**
        * Start
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       start: [{
-        start: [B]
+        start: [M]
       }],
       /**
        * End
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       end: [{
-        end: [B]
+        end: [M]
       }],
       /**
        * Top
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       top: [{
-        top: [B]
+        top: [M]
       }],
       /**
        * Right
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       right: [{
-        right: [B]
+        right: [M]
       }],
       /**
        * Bottom
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       bottom: [{
-        bottom: [B]
+        bottom: [M]
       }],
       /**
        * Left
        * @see https://tailwindcss.com/docs/top-right-bottom-left
        */
       left: [{
-        left: [B]
+        left: [M]
       }],
       /**
        * Visibility
@@ -4483,63 +4490,63 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/margin
        */
       m: [{
-        m: [L]
+        m: [H]
       }],
       /**
        * Margin X
        * @see https://tailwindcss.com/docs/margin
        */
       mx: [{
-        mx: [L]
+        mx: [H]
       }],
       /**
        * Margin Y
        * @see https://tailwindcss.com/docs/margin
        */
       my: [{
-        my: [L]
+        my: [H]
       }],
       /**
        * Margin Start
        * @see https://tailwindcss.com/docs/margin
        */
       ms: [{
-        ms: [L]
+        ms: [H]
       }],
       /**
        * Margin End
        * @see https://tailwindcss.com/docs/margin
        */
       me: [{
-        me: [L]
+        me: [H]
       }],
       /**
        * Margin Top
        * @see https://tailwindcss.com/docs/margin
        */
       mt: [{
-        mt: [L]
+        mt: [H]
       }],
       /**
        * Margin Right
        * @see https://tailwindcss.com/docs/margin
        */
       mr: [{
-        mr: [L]
+        mr: [H]
       }],
       /**
        * Margin Bottom
        * @see https://tailwindcss.com/docs/margin
        */
       mb: [{
-        mb: [L]
+        mb: [H]
       }],
       /**
        * Margin Left
        * @see https://tailwindcss.com/docs/margin
        */
       ml: [{
-        ml: [L]
+        ml: [H]
       }],
       /**
        * Space Between X
@@ -4734,7 +4741,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/placeholder-opacity
        */
       "placeholder-opacity": [{
-        "placeholder-opacity": [H]
+        "placeholder-opacity": [_]
       }],
       /**
        * Text Alignment
@@ -4755,7 +4762,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/text-opacity
        */
       "text-opacity": [{
-        "text-opacity": [H]
+        "text-opacity": [_]
       }],
       /**
        * Text Decoration
@@ -4870,7 +4877,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/background-opacity
        */
       "bg-opacity": [{
-        "bg-opacity": [H]
+        "bg-opacity": [_]
       }],
       /**
        * Background Origin
@@ -4884,7 +4891,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/background-position
        */
       "bg-position": [{
-        bg: [...M1(), kl]
+        bg: [...L1(), kl]
       }],
       /**
        * Background Repeat
@@ -4923,21 +4930,21 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-from-pos": [{
-        from: [k]
+        from: [$]
       }],
       /**
        * Gradient Color Stops Via Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-via-pos": [{
-        via: [k]
+        via: [$]
       }],
       /**
        * Gradient Color Stops To Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-to-pos": [{
-        to: [k]
+        to: [$]
       }],
       /**
        * Gradient Color Stops From
@@ -5134,7 +5141,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/border-opacity
        */
       "border-opacity": [{
-        "border-opacity": [H]
+        "border-opacity": [_]
       }],
       /**
        * Border Style
@@ -5172,7 +5179,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/divide-opacity
        */
       "divide-opacity": [{
-        "divide-opacity": [H]
+        "divide-opacity": [_]
       }],
       /**
        * Divide Style
@@ -5303,7 +5310,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/ring-opacity
        */
       "ring-opacity": [{
-        "ring-opacity": [H]
+        "ring-opacity": [_]
       }],
       /**
        * Ring Offset Width
@@ -5325,7 +5332,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/box-shadow
        */
       shadow: [{
-        shadow: ["", "inner", "none", O, Ml]
+        shadow: ["", "inner", "none", O, Ll]
       }],
       /**
        * Box Shadow Color
@@ -5339,21 +5346,21 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/opacity
        */
       opacity: [{
-        opacity: [H]
+        opacity: [_]
       }],
       /**
        * Mix Blend Mode
        * @see https://tailwindcss.com/docs/mix-blend-mode
        */
       "mix-blend": [{
-        "mix-blend": [...L1(), "plus-lighter", "plus-darker"]
+        "mix-blend": [...M1(), "plus-lighter", "plus-darker"]
       }],
       /**
        * Background Blend Mode
        * @see https://tailwindcss.com/docs/background-blend-mode
        */
       "bg-blend": [{
-        "bg-blend": L1()
+        "bg-blend": M1()
       }],
       // Filters
       /**
@@ -5482,7 +5489,7 @@ const _ = (e) => {
        * @see https://tailwindcss.com/docs/backdrop-opacity
        */
       "backdrop-opacity": [{
-        "backdrop-opacity": [H]
+        "backdrop-opacity": [_]
       }],
       /**
        * Backdrop Saturate
@@ -6015,7 +6022,7 @@ export {
   v5 as ErrorHexaIcon,
   k5 as ErrorIcon,
   Ol as FileInput,
-  L5 as FlagIcon,
+  M5 as FlagIcon,
   Z5 as FolderIcon,
   Nt as FormDialog,
   D5 as GridIcon,
@@ -6034,7 +6041,7 @@ export {
   bo as MailBox,
   xo as MailIcon,
   wo as MenuIcon,
-  Mo as Message2Line,
+  Lo as Message2Line,
   Et as Modal,
   Fl as MultiSelect,
   Bo as PageIcon,

@@ -1,105 +1,115 @@
-import { ref, computed, onMounted, watch, provide, inject } from 'vue'
-import type { Ref, ComputedRef, InjectionKey } from 'vue'
+import { ref, computed, onMounted, watch, provide, inject } from "vue";
+import type { Ref, ComputedRef, InjectionKey } from "vue";
 
-export type Theme = 'light' | 'dark'
+export type Theme = "light" | "dark";
 
 export interface ThemeContext {
-  theme: Ref<Theme>
-  isDarkMode: ComputedRef<boolean>
-  toggleTheme: () => void
-  setTheme: (theme: Theme) => void
+  theme: Ref<Theme>;
+  isDarkMode: ComputedRef<boolean>;
+  toggleTheme: () => void;
+  setTheme: (theme: Theme) => void;
 }
 
-export const ThemeSymbol: InjectionKey<ThemeContext> = Symbol('theme')
+export const ThemeSymbol: InjectionKey<ThemeContext> = Symbol("theme");
 
 export interface UseThemeProviderOptions {
   /** Storage key for persisting theme (default: 'theme') */
-  storageKey?: string
+  storageKey?: string;
   /** Default theme if no stored or system preference (default: 'light') */
-  defaultTheme?: Theme
+  defaultTheme?: Theme;
   /** Whether to sync with system preference (default: true) */
-  syncWithSystem?: boolean
+  syncWithSystem?: boolean;
 }
 
 export function useThemeProvider(options: UseThemeProviderOptions = {}) {
-  const { storageKey = 'theme', defaultTheme = 'light', syncWithSystem = true } = options
+  const {
+    storageKey = "theme",
+    defaultTheme = "light",
+    syncWithSystem = true,
+  } = options;
 
-  const theme = ref<Theme>(defaultTheme)
-  const isInitialized = ref(false)
+  const theme = ref<Theme>(defaultTheme);
+  const isInitialized = ref(false);
 
-  const isDarkMode = computed(() => theme.value === 'dark')
+  const isDarkMode = computed(() => theme.value === "dark");
 
   const toggleTheme = () => {
-    theme.value = theme.value === 'light' ? 'dark' : 'light'
-  }
+    theme.value = theme.value === "light" ? "dark" : "light";
+  };
 
   const setTheme = (newTheme: Theme) => {
-    theme.value = newTheme
-  }
+    theme.value = newTheme;
+  };
 
   const applyTheme = (newTheme: Theme) => {
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark')
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.remove("dark");
     }
-  }
+  };
 
   onMounted(() => {
-    // Try to get stored theme
-    const savedTheme = localStorage.getItem(storageKey) as Theme | null
+    const savedTheme = localStorage.getItem(storageKey) as Theme | null;
 
-    let initialTheme: Theme = defaultTheme
+    let initialTheme: Theme;
 
-    if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
-      initialTheme = savedTheme
+    if (savedTheme === "light" || savedTheme === "dark") {
+      // 1. localStorage hat immer Vorrang (User-Entscheidung)
+      initialTheme = savedTheme;
     } else if (
       syncWithSystem &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
+      window.matchMedia?.("(prefers-color-scheme: dark)").matches
     ) {
-      initialTheme = 'dark'
+      // 2. System-Präferenz wenn kein gespeicherter Wert
+      initialTheme = "dark";
+    } else {
+      // 3. defaultTheme als Fallback
+      initialTheme = defaultTheme;
     }
 
-    theme.value = initialTheme
-    applyTheme(initialTheme)
-    isInitialized.value = true
+    theme.value = initialTheme;
+    applyTheme(initialTheme);
+    isInitialized.value = true;
 
-    // Listen for system theme changes
     if (syncWithSystem) {
-      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem(storageKey)) {
-          const newTheme = e.matches ? 'dark' : 'light'
-          theme.value = newTheme
-          applyTheme(newTheme)
-        }
-      })
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          if (!localStorage.getItem(storageKey)) {
+            const newTheme = e.matches ? "dark" : "light";
+            theme.value = newTheme;
+            applyTheme(newTheme);
+          }
+        });
     }
-  })
+  });
 
   watch([theme, isInitialized], ([newTheme, initialized]) => {
     if (initialized) {
-      localStorage.setItem(storageKey, newTheme)
-      applyTheme(newTheme)
+      localStorage.setItem(storageKey, newTheme);
+      applyTheme(newTheme);
     }
-  })
+  });
 
   const context: ThemeContext = {
     theme,
     isDarkMode,
     toggleTheme,
     setTheme,
-  }
+  };
 
-  provide(ThemeSymbol, context)
+  provide(ThemeSymbol, context);
 
-  return context
+  return context;
 }
 
 export function useTheme(): ThemeContext {
-  const context = inject(ThemeSymbol)
+  const context = inject(ThemeSymbol);
   if (!context) {
-    throw new Error('useTheme must be used within a component that has ThemeProvider as an ancestor')
+    throw new Error(
+      "useTheme must be used within a component that has ThemeProvider as an ancestor",
+    );
   }
-  return context
+  return context;
 }

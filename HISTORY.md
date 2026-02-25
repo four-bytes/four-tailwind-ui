@@ -23,3 +23,9 @@
 - BarChart: dark:text-gray-700 → dark:text-gray-500 (Labels im Dark Mode lesbar)
 - Sidebar: dark:text-gray-100 ergänzt (Text im Dark Mode war schwarz auf dunkel)
 - StatsList: Dark-Mode Label-Farbe geprüft (dark:text-gray-400 bereits korrekt, kein Fix nötig)
+
+## 0.2.9 — 2026-02-25
+- useTheme: defaultTheme='dark' hat Vorrang über gespeicherten 'light'-Wert in localStorage
+
+## 0.2.10 — 2026-02-25
+- useTheme: Priorität korrigiert — localStorage (User-Entscheidung) hat immer Vorrang vor defaultTheme
