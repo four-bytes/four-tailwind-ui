@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen xl:flex">
+  <div class="min-h-screen xl:flex bg-gray-50 dark:bg-gray-950">
     <slot name="sidebar">
       <!-- Default: Use the Sidebar component -->
       <Sidebar>
