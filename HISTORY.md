@@ -7,3 +7,10 @@
 ## 0.2.4 — 2026-02-25
 - Tailwind v4: @custom-variant dark korrigiert (&:where(.dark, .dark *))
 - tailwind.config.js (v3-Relikt) entfernt
+
+## 0.2.5 — 2026-02-25
+- style.css: body dark:bg-gray-950 ergänzt (fehlte seit dark-variant Fix)
+
+## 0.2.6 — 2026-02-25
+- Toast: blue-* Farben auf blue-light-* korrigiert (nicht in @theme definiert)
+- InputField, TextareaField, SelectField, MultiSelect: bg-transparent → bg-white (Light Mode Fix)

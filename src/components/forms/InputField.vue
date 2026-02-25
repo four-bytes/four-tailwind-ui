@@ -19,7 +19,7 @@
         :required="required"
         :disabled="disabled"
         :class="[
-          'w-full rounded-lg border bg-transparent text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30',
+          'w-full rounded-lg border bg-white text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:outline-hidden focus:ring-3 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30',
           sizeClass,
           stateClasses,
           { 'pr-10': showStateIcon && (error || success) },
