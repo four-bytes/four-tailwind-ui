@@ -79,17 +79,15 @@ const dashOffset = computed(
   <Card
     :class="
       cn(
-        'group relative overflow-hidden transition-colors',
+        'group transition-colors bg-gradient-to-br to-transparent',
+        colors.gradient,
         colors.hoverBorder,
         props.class,
       )
     "
     content-class="!p-0"
   >
-    <div
-      :class="`absolute inset-0 bg-gradient-to-br ${colors.gradient} to-transparent`"
-    />
-    <div class="relative p-4 flex flex-col items-center">
+    <div class="p-4 flex flex-col items-center">
       <!-- Label -->
       <span
         class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2"
@@ -149,7 +147,7 @@ const dashOffset = computed(
     </div>
 
     <!-- Detail rows below the gauge -->
-    <div v-if="hasDetails" class="relative px-4 pb-4">
+    <div v-if="hasDetails" class="px-4 pb-4">
       <div
         class="border-t border-gray-200 dark:border-gray-800 pt-3 space-y-1.5"
       >

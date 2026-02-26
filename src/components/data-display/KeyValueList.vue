@@ -30,17 +30,15 @@ const colors = computed(() => colorMap[props.color]);
   <Card
     :class="
       cn(
-        'group relative overflow-hidden transition-colors',
+        'group transition-colors bg-gradient-to-br to-transparent',
+        colors.gradient,
         colors.hoverBorder,
         props.class,
       )
     "
     content-class="!p-0"
   >
-    <div
-      :class="`absolute inset-0 bg-gradient-to-br ${colors.gradient} to-transparent`"
-    />
-    <div class="relative p-5">
+    <div class="p-5">
       <!-- Header slot -->
       <div v-if="slots.header" class="flex items-center justify-between mb-4">
         <slot name="header" />

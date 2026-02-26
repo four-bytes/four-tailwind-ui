@@ -4721,7 +4721,7 @@ function Ye(e, t, r) {
     if (e < a.at) return a.color;
   return t;
 }
-const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2" }, cr = { class: "relative w-40 h-24" }, ur = {
+const ir = { class: "p-4 flex flex-col items-center" }, dr = { class: "text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2" }, cr = { class: "relative w-40 h-24" }, ur = {
   viewBox: "0 0 160 90",
   class: "w-full h-full"
 }, gr = ["stroke-dashoffset"], fr = { class: "absolute inset-0 flex flex-col items-center justify-end pb-0" }, br = { class: "flex items-baseline gap-0.5" }, hr = { class: "text-xs text-gray-400 dark:text-gray-500" }, mr = {
@@ -4729,7 +4729,7 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
   class: "text-xs text-gray-400 dark:text-gray-500 mt-1"
 }, Cr = {
   key: 0,
-  class: "relative px-4 pb-4"
+  class: "px-4 pb-4"
 }, xr = { class: "border-t border-gray-200 dark:border-gray-800 pt-3 space-y-1.5" }, vr = { class: "text-[11px] text-gray-400 dark:text-gray-500" }, pr = { class: "text-[11px] font-medium tabular-nums text-gray-700 dark:text-gray-300" }, yr = 70, ze = 10, ba = /* @__PURE__ */ L({
   __name: "SemiCircleGauge",
   props: {
@@ -4757,7 +4757,8 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
     return (x, v) => (o(), Z(te, {
       class: g(
         d(m)(
-          "group relative overflow-hidden transition-colors",
+          "group transition-colors bg-gradient-to-br to-transparent",
+          c.value.gradient,
           c.value.hoverBorder,
           t.class
         )
@@ -4765,9 +4766,6 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
       "content-class": "!p-0"
     }, {
       default: _(() => [
-        l("div", {
-          class: g(`absolute inset-0 bg-gradient-to-br ${c.value.gradient} to-transparent`)
-        }, null, 2),
         l("div", ir, [
           l("span", dr, C(e.label), 1),
           l("div", cr, [
@@ -5069,7 +5067,7 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
       _: 3
     }, 8, ["class"]));
   }
-}), Pr = { class: "relative p-5" }, Fr = {
+}), Pr = { class: "p-5" }, Fr = {
   key: 0,
   class: "flex items-center justify-between mb-4"
 }, Or = {
@@ -5112,7 +5110,8 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
     return (h, x) => (o(), Z(te, {
       class: g(
         d(m)(
-          "group relative overflow-hidden transition-colors",
+          "group transition-colors bg-gradient-to-br to-transparent",
+          s.value.gradient,
           s.value.hoverBorder,
           t.class
         )
@@ -5120,9 +5119,6 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
       "content-class": "!p-0"
     }, {
       default: _(() => [
-        l("div", {
-          class: g(`absolute inset-0 bg-gradient-to-br ${s.value.gradient} to-transparent`)
-        }, null, 2),
         l("div", Pr, [
           d(r).header ? (o(), n("div", Fr, [
             M(h.$slots, "header")
@@ -5171,7 +5167,7 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
       _: 3
     }, 8, ["class"]));
   }
-}), Wr = { class: "relative p-5" }, Kr = {
+}), Wr = { class: "p-5" }, Kr = {
   key: 0,
   class: "flex items-center justify-between mb-4"
 }, Ur = { class: "space-y-2" }, Jr = { class: "text-xs text-gray-400 dark:text-gray-500" }, Xr = {
@@ -5190,7 +5186,8 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
     return (a, i) => (o(), Z(te, {
       class: g(
         d(m)(
-          "group relative overflow-hidden transition-colors",
+          "group transition-colors bg-gradient-to-br to-transparent",
+          s.value.gradient,
           s.value.hoverBorder,
           t.class
         )
@@ -5198,9 +5195,6 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
       "content-class": "!p-0"
     }, {
       default: _(() => [
-        l("div", {
-          class: g(`absolute inset-0 bg-gradient-to-br ${s.value.gradient} to-transparent`)
-        }, null, 2),
         l("div", Wr, [
           d(r).header ? (o(), n("div", Kr, [
             M(a.$slots, "header")

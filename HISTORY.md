@@ -125,3 +125,7 @@
 ## v0.3.7 — 2026-02-26
 - Fix: StatCard Gradient-Overlay-Div entfernt — direkt als bg-gradient auf Card angewendet
 - Fix: kein absolute/relative/overflow-hidden mehr nötig in StatCard
+
+## v0.3.8 — 2026-02-26
+- Fix: Gradient-Overlay-Div aus KeyValueList, BarChart, SemiCircleGauge entfernt
+- Fix: Gradient direkt als bg-gradient-to-br auf Card angewendet (kein absolute/relative mehr)
