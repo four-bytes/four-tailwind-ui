@@ -1,10 +1,9 @@
 <template>
   <Teleport to="body">
     <div
-      :class="[
-        'fixed z-[99999] flex flex-col gap-2 p-4',
-        positionClasses[position],
-      ]"
+      :class="
+        cn('fixed z-[99999] flex flex-col gap-2 p-4', positionClasses[position])
+      "
     >
       <TransitionGroup
         enter-active-class="transition duration-300 ease-out"
@@ -30,26 +29,33 @@
 </template>
 
 <script setup lang="ts">
-import { useToast } from '../../composables/useToast'
-import Toast from './Toast.vue'
+import { useToast } from "../../composables/useToast";
+import { cn } from "../../utils/cn";
+import Toast from "./Toast.vue";
 
 withDefaults(
   defineProps<{
-    position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'top-center' | 'bottom-center'
+    position?:
+      | "top-right"
+      | "top-left"
+      | "bottom-right"
+      | "bottom-left"
+      | "top-center"
+      | "bottom-center";
   }>(),
   {
-    position: 'top-right',
-  }
-)
+    position: "top-right",
+  },
+);
 
-const { toasts, remove } = useToast()
+const { toasts, remove } = useToast();
 
 const positionClasses = {
-  'top-right': 'top-0 right-0',
-  'top-left': 'top-0 left-0',
-  'bottom-right': 'bottom-0 right-0',
-  'bottom-left': 'bottom-0 left-0',
-  'top-center': 'top-0 left-1/2 -translate-x-1/2',
-  'bottom-center': 'bottom-0 left-1/2 -translate-x-1/2',
-}
+  "top-right": "top-0 right-0",
+  "top-left": "top-0 left-0",
+  "bottom-right": "bottom-0 right-0",
+  "bottom-left": "bottom-0 left-0",
+  "top-center": "top-0 left-1/2 -translate-x-1/2",
+  "bottom-center": "bottom-0 left-1/2 -translate-x-1/2",
+};
 </script>

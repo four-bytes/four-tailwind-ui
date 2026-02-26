@@ -23,7 +23,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     /** Locale for number formatting */
     locale?: string;
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {
     color: string;
     absolute: boolean;
@@ -48,7 +48,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     /** Locale for number formatting */
     locale?: string;
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {
     color: string;
     absolute: boolean;

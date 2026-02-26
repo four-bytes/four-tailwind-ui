@@ -6,6 +6,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     required?: boolean;
     error?: string;
     hint?: string;
+    class?: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     change: (files: FileList | null) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
@@ -16,6 +17,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     required?: boolean;
     error?: string;
     hint?: string;
+    class?: string;
 }>>> & Readonly<{
     onChange?: ((files: FileList | null) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;

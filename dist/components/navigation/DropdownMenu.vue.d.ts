@@ -19,6 +19,8 @@ interface DropdownMenuProps {
     itemClass?: string;
     /** Position of the dropdown */
     position?: "left" | "right";
+    /** Additional CSS classes for the outer wrapper */
+    class?: string;
 }
 declare function __VLS_template(): {
     trigger?(_: {}): any;

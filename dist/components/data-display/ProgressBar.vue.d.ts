@@ -26,7 +26,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     /** Wrap in a Card component (default: true) */
     wrapped?: boolean;
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {
     max: number;
     unit: string;
@@ -67,7 +67,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     /** Wrap in a Card component (default: true) */
     wrapped?: boolean;
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {
     max: number;
     unit: string;

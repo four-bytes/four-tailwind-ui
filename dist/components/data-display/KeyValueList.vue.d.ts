@@ -12,7 +12,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     /** Show separator lines between rows (default: true) */
     showSeparators?: boolean;
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {
     color: string;
     showSeparators: boolean;
@@ -24,7 +24,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     /** Show separator lines between rows (default: true) */
     showSeparators?: boolean;
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {
     color: string;
     showSeparators: boolean;

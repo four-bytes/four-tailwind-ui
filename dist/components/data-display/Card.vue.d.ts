@@ -4,7 +4,7 @@ interface CardProps {
     /** Card description */
     description?: string;
     /** Additional CSS classes for the card */
-    className?: string;
+    class?: string;
     /** CSS classes for the content wrapper */
     contentClass?: string;
 }

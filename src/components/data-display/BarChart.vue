@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, useSlots } from "vue";
 import Card from "./Card.vue";
+import { cn } from "../../utils/cn";
 import { colorMap } from "../../utils/colors";
 import type { TailwindColor, BarChartItem } from "../../utils/colors";
 
@@ -23,7 +24,7 @@ const props = withDefaults(
     /** Label for empty state */
     emptyLabel?: string;
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
   }>(),
   {
     color: "sky",
@@ -78,7 +79,13 @@ const groupBoundaryIndices = computed(() => {
 
 <template>
   <Card
-    :class-name="`group relative overflow-hidden ${colors.hoverBorder} transition-colors ${className ?? ''}`"
+    :class="
+      cn(
+        'group relative overflow-hidden transition-colors',
+        colors.hoverBorder,
+        props.class,
+      )
+    "
     content-class="!p-0"
   >
     <div
@@ -101,9 +108,11 @@ const groupBoundaryIndices = computed(() => {
           :key="i"
           class="flex-1 flex flex-col items-center h-full"
           :class="
-            groupBoundaryIndices.has(i)
-              ? 'border-l border-gray-300 dark:border-gray-700 pl-0.5'
-              : ''
+            cn(
+              groupBoundaryIndices.has(i)
+                ? 'border-l border-gray-300 dark:border-gray-700 pl-0.5'
+                : '',
+            )
           "
         >
           <!-- Value label above bar -->
@@ -116,25 +125,31 @@ const groupBoundaryIndices = computed(() => {
           <!-- Bar container -->
           <div class="w-full flex-1 relative">
             <div
-              :class="`absolute bottom-0 left-0.5 right-0.5 rounded-t transition-all duration-500 ${
-                bar.highlighted
-                  ? colors.barSolid
-                  : bar.group === items[items.length - 1]?.group
-                    ? colors.barSolidMuted
-                    : colors.barSolidFaded
-              }`"
+              :class="
+                cn(
+                  'absolute bottom-0 left-0.5 right-0.5 rounded-t transition-all duration-500',
+                  bar.highlighted
+                    ? colors.barSolid
+                    : bar.group === items[items.length - 1]?.group
+                      ? colors.barSolidMuted
+                      : colors.barSolidFaded,
+                )
+              "
               :style="{ height: barHeight(bar.value) }"
             />
           </div>
           <!-- Label -->
           <span
-            :class="`text-[9px] leading-none mt-1.5 shrink-0 ${
-              bar.highlighted
-                ? `${colors.textLight} ${colors.textDark} font-medium`
-                : bar.group === items[items.length - 1]?.group
-                  ? 'text-gray-500 dark:text-gray-500'
-                  : 'text-gray-300 dark:text-gray-500'
-            }`"
+            :class="
+              cn(
+                'text-[9px] leading-none mt-1.5 shrink-0',
+                bar.highlighted
+                  ? `${colors.textLight} ${colors.textDark} font-medium`
+                  : bar.group === items[items.length - 1]?.group
+                    ? 'text-gray-500 dark:text-gray-500'
+                    : 'text-gray-300 dark:text-gray-500',
+              )
+            "
           >
             {{ bar.label }}
           </span>

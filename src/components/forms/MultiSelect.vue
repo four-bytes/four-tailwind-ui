@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div :class="cn(props.class)">
     <label
       v-if="label"
       class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400"
-      :class="{ 'text-gray-300 dark:text-white/15': disabled }"
+      :class="cn(disabled && 'text-gray-300 dark:text-white/15')"
     >
       {{ label }}
       <span v-if="required" class="text-error-500">*</span>
@@ -11,15 +11,17 @@
     <div class="relative" ref="multiSelectRef">
       <div
         @click="!disabled && toggleDropdown()"
-        class="min-h-11 flex items-center w-full appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800"
-        :class="[
-          { 'text-gray-800 dark:text-white/90': isOpen },
-          { 'cursor-not-allowed opacity-50': disabled },
-          error ? 'border-error-300 dark:border-error-700' : ''
-        ]"
+        :class="
+          cn(
+            'min-h-11 flex items-center w-full appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800',
+            isOpen && 'text-gray-800 dark:text-white/90',
+            disabled && 'cursor-not-allowed opacity-50',
+            error ? 'border-error-300 dark:border-error-700' : '',
+          )
+        "
       >
         <span v-if="selectedItems.length === 0" class="text-gray-400">
-          {{ placeholder || 'Select items...' }}
+          {{ placeholder || "Select items..." }}
         </span>
         <div class="flex flex-wrap items-center flex-auto gap-2">
           <div
@@ -53,7 +55,7 @@
         </div>
         <svg
           class="ml-auto shrink-0 transition-transform"
-          :class="{ 'rotate-180': isOpen }"
+          :class="cn(isOpen && 'rotate-180')"
           width="20"
           height="20"
           viewBox="0 0 20 20"
@@ -90,8 +92,12 @@
               v-for="item in options"
               :key="item.value"
               @click="toggleItem(item)"
-              class="relative flex items-center w-full px-3 py-2 cursor-pointer first:rounded-t-lg last:rounded-b-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-white"
-              :class="{ 'bg-gray-50 dark:bg-white/[0.03]': isSelected(item) }"
+              :class="
+                cn(
+                  'relative flex items-center w-full px-3 py-2 cursor-pointer first:rounded-t-lg last:rounded-b-lg hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-white',
+                  isSelected(item) && 'bg-gray-50 dark:bg-white/[0.03]',
+                )
+              "
               role="option"
               :aria-selected="isSelected(item)"
             >
@@ -120,67 +126,82 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import type { SelectOption } from '../../types'
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
+import type { SelectOption } from "../../types";
+import { cn } from "../../utils/cn";
 
-const props = withDefaults(defineProps<{
-  options: SelectOption[]
-  modelValue: SelectOption[]
-  label?: string
-  placeholder?: string
-  required?: boolean
-  disabled?: boolean
-  error?: string
-}>(), {
-  modelValue: () => [],
-})
+const props = withDefaults(
+  defineProps<{
+    options: SelectOption[];
+    modelValue: SelectOption[];
+    label?: string;
+    placeholder?: string;
+    required?: boolean;
+    disabled?: boolean;
+    error?: string;
+    class?: string;
+  }>(),
+  {
+    modelValue: () => [],
+    class: "",
+  },
+);
+
+defineOptions({ inheritAttrs: false });
 
 const emit = defineEmits<{
-  'update:modelValue': [value: SelectOption[]]
-}>()
+  "update:modelValue": [value: SelectOption[]];
+}>();
 
-const isOpen = ref(false)
-const multiSelectRef = ref<HTMLElement | null>(null)
+const isOpen = ref(false);
+const multiSelectRef = ref<HTMLElement | null>(null);
 
-const selectedItems = computed(() => props.modelValue)
+const selectedItems = computed(() => props.modelValue);
 
 const toggleDropdown = () => {
-  isOpen.value = !isOpen.value
-}
+  isOpen.value = !isOpen.value;
+};
 
 const toggleItem = (item: SelectOption) => {
-  const index = selectedItems.value.findIndex((selected) => selected.value === item.value)
-  let newValue: SelectOption[]
-  
+  const index = selectedItems.value.findIndex(
+    (selected) => selected.value === item.value,
+  );
+  let newValue: SelectOption[];
+
   if (index === -1) {
-    newValue = [...selectedItems.value, item]
+    newValue = [...selectedItems.value, item];
   } else {
-    newValue = selectedItems.value.filter((_, i) => i !== index)
+    newValue = selectedItems.value.filter((_, i) => i !== index);
   }
-  
-  emit('update:modelValue', newValue)
-}
+
+  emit("update:modelValue", newValue);
+};
 
 const removeItem = (item: SelectOption) => {
-  const newValue = selectedItems.value.filter((selected) => selected.value !== item.value)
-  emit('update:modelValue', newValue)
-}
+  const newValue = selectedItems.value.filter(
+    (selected) => selected.value !== item.value,
+  );
+  emit("update:modelValue", newValue);
+};
 
 const isSelected = (item: SelectOption) => {
-  return selectedItems.value.some((selected) => selected.value === item.value)
-}
+  return selectedItems.value.some((selected) => selected.value === item.value);
+};
 
 const handleClickOutside = (event: MouseEvent) => {
-  if (multiSelectRef.value && !multiSelectRef.value.contains(event.target as Node)) {
-    isOpen.value = false
+  if (
+    multiSelectRef.value &&
+    !multiSelectRef.value.contains(event.target as Node)
+  ) {
+    isOpen.value = false;
   }
-}
+};
 
 onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
-})
+  document.addEventListener("click", handleClickOutside);
+});
 
 onBeforeUnmount(() => {
-  document.removeEventListener('click', handleClickOutside)
-})
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>

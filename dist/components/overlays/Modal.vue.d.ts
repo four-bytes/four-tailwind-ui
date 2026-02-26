@@ -7,12 +7,14 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     closeOnBackdrop?: boolean;
     closeOnEscape?: boolean;
     blur?: boolean;
+    class?: string;
 }>, {
     modelValue: boolean;
     size: string;
     closeOnBackdrop: boolean;
     closeOnEscape: boolean;
     blur: boolean;
+    class: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     close: () => void;
     "update:modelValue": (value: boolean) => void;
@@ -22,17 +24,20 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     closeOnBackdrop?: boolean;
     closeOnEscape?: boolean;
     blur?: boolean;
+    class?: string;
 }>, {
     modelValue: boolean;
     size: string;
     closeOnBackdrop: boolean;
     closeOnEscape: boolean;
     blur: boolean;
+    class: string;
 }>>> & Readonly<{
     onClose?: (() => any) | undefined;
     "onUpdate:modelValue"?: ((value: boolean) => any) | undefined;
 }>, {
     size: "sm" | "md" | "lg" | "xl" | "full";
+    class: string;
     blur: boolean;
     modelValue: boolean;
     closeOnBackdrop: boolean;

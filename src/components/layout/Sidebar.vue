@@ -1,24 +1,27 @@
 <template>
   <aside
-    :class="[
-      'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 dark:text-gray-100 h-screen transition-all duration-300 ease-in-out z-[9999] border-r border-gray-200',
-      {
-        'lg:w-[290px]': isExpanded || isMobileOpen || isHovered,
-        'lg:w-[90px]': !isExpanded && !isHovered,
-        'translate-x-0 w-[290px]': isMobileOpen,
-        '-translate-x-full': !isMobileOpen,
-        'lg:translate-x-0': true,
-      },
-    ]"
+    aria-label="Sidebar navigation"
+    :class="
+      cn(
+        'fixed mt-16 flex flex-col lg:mt-0 top-0 px-5 left-0 bg-white dark:bg-gray-900 dark:border-gray-800 text-gray-900 dark:text-gray-100 h-screen transition-all duration-300 ease-in-out z-[9999] border-r border-gray-200',
+        isExpanded || isMobileOpen || isHovered
+          ? 'lg:w-[290px]'
+          : 'lg:w-[90px]',
+        isMobileOpen ? 'translate-x-0 w-[290px]' : '-translate-x-full',
+        'lg:translate-x-0',
+      )
+    "
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
   >
     <!-- Logo Slot -->
     <div
-      :class="[
-        'py-8 flex',
-        !isExpanded && !isHovered ? 'lg:justify-center' : 'justify-start',
-      ]"
+      :class="
+        cn(
+          'py-8 flex',
+          !isExpanded && !isHovered ? 'lg:justify-center' : 'justify-start',
+        )
+      "
     >
       <slot
         name="logo"
@@ -64,6 +67,7 @@
 import { watch } from "vue";
 import { useRoute } from "vue-router";
 import { useSidebar } from "../../composables/useSidebar";
+import { cn } from "../../utils/cn";
 
 const props = withDefaults(
   defineProps<{
@@ -116,13 +120,3 @@ const handleMouseLeave = () => {
   setIsHovered(false);
 };
 </script>
-
-<style scoped>
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-</style>

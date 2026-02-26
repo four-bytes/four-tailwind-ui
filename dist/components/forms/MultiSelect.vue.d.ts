@@ -8,8 +8,10 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     required?: boolean;
     disabled?: boolean;
     error?: string;
+    class?: string;
 }>, {
     modelValue: () => never[];
+    class: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: SelectOption[]) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
@@ -20,11 +22,14 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     required?: boolean;
     disabled?: boolean;
     error?: string;
+    class?: string;
 }>, {
     modelValue: () => never[];
+    class: string;
 }>>> & Readonly<{
     "onUpdate:modelValue"?: ((value: SelectOption[]) => any) | undefined;
 }>, {
+    class: string;
     modelValue: SelectOption[];
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 export default _default;

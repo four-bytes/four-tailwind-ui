@@ -16,6 +16,16 @@ export interface UseThemeProviderOptions {
     /** Whether to sync with system preference (default: true) */
     syncWithSystem?: boolean;
 }
+/**
+ * Standalone theme initializer — call in main.ts as escape hatch
+ * when you cannot use ThemeProvider for some reason.
+ *
+ * @example
+ * // main.ts
+ * import { autoInitTheme } from '@four-bytes/four-tailwind-ui'
+ * autoInitTheme()
+ */
+export declare function autoInitTheme(storageKey?: string, defaultTheme?: Theme): void;
 export declare function useThemeProvider(options?: UseThemeProviderOptions): ThemeContext;
 export declare function useTheme(): ThemeContext;
 //# sourceMappingURL=useTheme.d.ts.map

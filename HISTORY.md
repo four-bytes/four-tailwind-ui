@@ -61,3 +61,46 @@
 ### Geändert
 - `src/style.css`: `body`-Style: `dark:bg-gray-950` entfernt — verhinderte globales `.dark *`-Selektor-Problem das alle Kindelemente überschrieb
 - Body-Hintergrundfarbe jetzt als direkte CSS-Custom-Property (`background-color: var(--color-gray-50)`)
+
+## 0.2.13 — 2026-02-25
+- Dark Mode: Root-Ursachen-Fix für inkonsistentes dark: Verhalten
+- AdminLayout: ThemeProvider + SidebarProvider jetzt intern eingebettet (kein manuelles Wrapping mehr nötig)
+- AdminLayout: useSidebar()-Aufruf in AdminLayoutContent ausgelagert (inject scope bug behoben)
+- useTheme: autoInitTheme() als Escape-Hatch für main.ts exportiert
+- useTheme: Fallback-Kontext statt throw wenn kein Provider — verhindert crashes + DEV-Warnung
+- Header: SVG fill="" → fill="currentColor" Fix (X-Icon war im Dark Mode unsichtbar)
+- Button: primary/danger dark:disabled Varianten ergänzt
+
+## 0.3.0 — 2026-02-25
+
+### Breaking Changes
+- Icon-Komponenten: `width`/`height` Attribute entfernt — Größe jetzt via CSS-Klassen (`w-5 h-5` als Default). Wer explizit `w-4 h-4` oder `w-6 h-6` brauchte, muss das als Eltern-Klasse setzen.
+- `className` Prop auf allen Komponenten umbenannt zu `class`
+- Vue Peer-Dependency auf `^3.5.0` erhöht (useId() Nutzung)
+- `.menu-item-*` CSS-Klassen entfernt — Ersatz: `<SidebarItem>`, `<SidebarGroup>`, `<SidebarSubmenu>`
+
+### New Components
+- `SidebarItem` — Navigationselement mit Icon, Label, Auto-Active-Detection via Router, Badge, Collapsed-Mode
+- `SidebarGroup` — Gruppe mit optionalem Heading (versteckt wenn Sidebar kollabiert)
+- `SidebarSubmenu` — Aufklappbares Untermenü, integriert mit useSidebar openSubmenu State
+
+### Improvements
+- `AdminLayout`: ThemeProvider + SidebarProvider jetzt intern eingebettet (Zero-Config Dark Mode)
+- `AdminLayoutContent`: Interner Wrapper löst inject-Scope-Bug bei useSidebar
+- `useTheme`: `autoInitTheme()` als Escape-Hatch für main.ts exportiert
+- `useTheme` + `useSidebar`: DEV-Warnung statt crash wenn kein Provider
+- `cn()`: Alle 34 Komponenten nutzen jetzt cn() für class merging (Overrides möglich)
+- `useId()`: SSR-sichere ID-Generierung in allen Form-Komponenten
+- Icons: `CalendarIcon` + `StarredIcon` als Typo-Aliase für CalenderIcon/StaredIcon ergänzt
+- Accessibility: role="alert"/"status" auf Alert, role="dialog" + Focus Trap auf Modal, aria-expanded auf DropdownMenu + Header, aria-describedby auf InputField, aria-label auf Sidebar
+- Tailwind v4: `@import "tailwindcss" source(none)`, `@utility` statt `@layer utilities`, autoprefixer entfernt
+- Header: SVG fill="" Bug behoben (X-Icon war im Dark Mode unsichtbar)
+- Button: dark:disabled Varianten für primary + danger ergänzt
+- DropdownMenu: Emit-Syntax auf Tuple-Stil normalisiert
+
+## [0.3.2] — 2026-02-25
+
+### Geändert
+- `src/style-tokens.css` (neu): Theme-Tokens, @custom-variant dark, @layer base, @layer utilities — ohne Tailwind-Import
+- `src/style.css`: Enthält nur noch @import "tailwindcss" + @import "./style-tokens.css" + @source
+- Konsumenten importieren jetzt `style-tokens.css` statt `style.css` — kein doppeltes Tailwind-Processing mehr

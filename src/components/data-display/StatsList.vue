@@ -1,44 +1,46 @@
 <script setup lang="ts">
-import Card from './Card.vue'
-import { colorMap } from '../../utils/colors'
-import type { StatsRow } from '../../utils/colors'
+import Card from "./Card.vue";
+import { colorMap } from "../../utils/colors";
+import type { StatsRow } from "../../utils/colors";
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     /** Array of metric rows to display */
-    rows: StatsRow[]
+    rows: StatsRow[];
     /** Additional CSS classes for the Card wrapper */
-    className?: string
+    class?: string;
   }>(),
   {},
-)
+);
 
 function formatValue(row: StatsRow): string {
-  if (row.value === null) return '--'
-  const decimals = row.decimals ?? 1
-  const val = (Math.round(row.value * Math.pow(10, decimals)) / Math.pow(10, decimals)).toFixed(
-    decimals,
-  )
-  return row.unit ? `${val} ${row.unit}` : val
+  if (row.value === null) return "--";
+  const decimals = row.decimals ?? 1;
+  const val = (
+    Math.round(row.value * Math.pow(10, decimals)) / Math.pow(10, decimals)
+  ).toFixed(decimals);
+  return row.unit ? `${val} ${row.unit}` : val;
 }
 
 function getPercent(row: StatsRow): number {
-  if (row.value === null) return 0
-  const max = row.max ?? 100
-  return Math.min(100, Math.max(0, (row.value / max) * 100))
+  if (row.value === null) return 0;
+  const max = row.max ?? 100;
+  return Math.min(100, Math.max(0, (row.value / max) * 100));
 }
 
 function getColors(row: StatsRow) {
-  return colorMap[row.color ?? 'sky']
+  return colorMap[row.color ?? "sky"];
 }
 </script>
 
 <template>
-  <Card :class-name="className" content-class="!space-y-4 !p-5">
+  <Card :class="props.class" content-class="!space-y-4 !p-5">
     <!-- Metric rows -->
     <div v-for="(row, i) in rows" :key="i">
       <div class="flex items-center justify-between">
-        <span class="text-sm text-gray-500 dark:text-gray-400">{{ row.label }}</span>
+        <span class="text-sm text-gray-500 dark:text-gray-400">{{
+          row.label
+        }}</span>
         <span
           :class="`text-sm font-medium tabular-nums ${getColors(row).textLight} ${getColors(row).textDark}`"
         >

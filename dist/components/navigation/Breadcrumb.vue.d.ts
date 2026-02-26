@@ -13,6 +13,8 @@ interface BreadcrumbProps {
     items?: BreadcrumbItem[];
     /** Component to use for links (default: 'a', use 'router-link' for vue-router) */
     linkComponent?: string | object;
+    /** Additional CSS classes for the outer wrapper */
+    class?: string;
 }
 declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<BreadcrumbProps>, {
     items: () => never[];

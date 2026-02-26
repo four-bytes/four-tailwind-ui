@@ -1,36 +1,45 @@
 <script setup lang="ts">
-import { computed, useSlots } from 'vue'
-import Card from './Card.vue'
-import { colorMap } from '../../utils/colors'
-import type { TailwindColor, KeyValueRow } from '../../utils/colors'
+import { computed, useSlots } from "vue";
+import Card from "./Card.vue";
+import { cn } from "../../utils/cn";
+import { colorMap } from "../../utils/colors";
+import type { TailwindColor, KeyValueRow } from "../../utils/colors";
 
 const props = withDefaults(
   defineProps<{
     /** Key-value rows to display */
-    rows: KeyValueRow[]
+    rows: KeyValueRow[];
     /** Accent color for highlighted values */
-    color?: TailwindColor
+    color?: TailwindColor;
     /** Show separator lines between rows (default: true) */
-    showSeparators?: boolean
+    showSeparators?: boolean;
     /** Additional CSS classes for the Card wrapper */
-    className?: string
+    class?: string;
   }>(),
   {
-    color: 'sky',
+    color: "sky",
     showSeparators: true,
   },
-)
+);
 
-const slots = useSlots()
-const colors = computed(() => colorMap[props.color])
+const slots = useSlots();
+const colors = computed(() => colorMap[props.color]);
 </script>
 
 <template>
   <Card
-    :class-name="`group relative overflow-hidden ${colors.hoverBorder} transition-colors ${className ?? ''}`"
+    :class="
+      cn(
+        'group relative overflow-hidden transition-colors',
+        colors.hoverBorder,
+        props.class,
+      )
+    "
     content-class="!p-0"
   >
-    <div :class="`absolute inset-0 bg-gradient-to-br ${colors.gradient} to-transparent`" />
+    <div
+      :class="`absolute inset-0 bg-gradient-to-br ${colors.gradient} to-transparent`"
+    />
     <div class="relative p-5">
       <!-- Header slot -->
       <div v-if="slots.header" class="flex items-center justify-between mb-4">
@@ -43,15 +52,26 @@ const colors = computed(() => colorMap[props.color])
           v-for="(row, i) in rows"
           :key="i"
           class="flex items-center justify-between py-1"
-          :class="showSeparators && i < rows.length - 1 ? 'border-b border-gray-100 dark:border-gray-800/50' : ''"
+          :class="
+            cn(
+              showSeparators && i < rows.length - 1
+                ? 'border-b border-gray-100 dark:border-gray-800/50'
+                : '',
+            )
+          "
         >
-          <span class="text-xs text-gray-400 dark:text-gray-500">{{ row.label }}</span>
+          <span class="text-xs text-gray-400 dark:text-gray-500">{{
+            row.label
+          }}</span>
           <span
-            :class="`text-sm font-medium tabular-nums ${
-              row.accent
-                ? `${colors.textLight} ${colors.textDark}`
-                : 'text-gray-700 dark:text-gray-300'
-            }`"
+            :class="
+              cn(
+                'text-sm font-medium tabular-nums',
+                row.accent
+                  ? `${colors.textLight} ${colors.textDark}`
+                  : 'text-gray-700 dark:text-gray-300',
+              )
+            "
           >
             {{ row.value }}
           </span>
@@ -59,7 +79,10 @@ const colors = computed(() => colorMap[props.color])
       </div>
 
       <!-- Footer slot -->
-      <div v-if="slots.footer" class="mt-4 pt-3 border-t border-gray-200 dark:border-gray-800">
+      <div
+        v-if="slots.footer"
+        class="mt-4 pt-3 border-t border-gray-200 dark:border-gray-800"
+      >
         <slot name="footer" />
       </div>
     </div>

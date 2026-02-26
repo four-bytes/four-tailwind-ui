@@ -1,14 +1,14 @@
 import { Component } from 'vue';
 
 interface ButtonProps {
-    size?: 'sm' | 'md' | 'lg';
-    variant?: 'primary' | 'outline' | 'ghost' | 'danger';
+    size?: "sm" | "md" | "lg";
+    variant?: "primary" | "outline" | "ghost" | "danger";
     startIcon?: Component;
     endIcon?: Component;
-    className?: string;
+    class?: string;
     disabled?: boolean;
     loading?: boolean;
-    type?: 'button' | 'submit' | 'reset';
+    type?: "button" | "submit" | "reset";
 }
 declare function __VLS_template(): {
     default?(_: {}): any;
@@ -16,7 +16,7 @@ declare function __VLS_template(): {
 declare const __VLS_component: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ButtonProps>, {
     size: string;
     variant: string;
-    className: string;
+    class: string;
     disabled: boolean;
     loading: boolean;
     type: string;
@@ -25,7 +25,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<ButtonProps>, {
     size: string;
     variant: string;
-    className: string;
+    class: string;
     disabled: boolean;
     loading: boolean;
     type: string;
@@ -34,7 +34,7 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
 }>, {
     size: "sm" | "md" | "lg";
     variant: "primary" | "outline" | "ghost" | "danger";
-    className: string;
+    class: string;
     disabled: boolean;
     loading: boolean;
     type: "button" | "submit" | "reset";

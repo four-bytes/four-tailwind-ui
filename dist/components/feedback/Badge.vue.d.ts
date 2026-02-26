@@ -1,14 +1,15 @@
 import { Component } from 'vue';
 
-type BadgeVariant = 'light' | 'solid';
-type BadgeSize = 'sm' | 'md';
-type BadgeColor = 'primary' | 'success' | 'error' | 'warning' | 'info' | 'light' | 'dark';
+type BadgeVariant = "light" | "solid";
+type BadgeSize = "sm" | "md";
+type BadgeColor = "primary" | "success" | "error" | "warning" | "info" | "light" | "dark";
 interface BadgeProps {
     variant?: BadgeVariant;
     size?: BadgeSize;
     color?: BadgeColor;
     startIcon?: Component;
     endIcon?: Component;
+    class?: string;
 }
 declare function __VLS_template(): {
     default?(_: {}): any;
@@ -17,13 +18,16 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     variant: string;
     color: string;
     size: string;
+    class: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<BadgeProps>, {
     variant: string;
     color: string;
     size: string;
+    class: string;
 }>>> & Readonly<{}>, {
     size: BadgeSize;
     variant: BadgeVariant;
+    class: string;
     color: BadgeColor;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;

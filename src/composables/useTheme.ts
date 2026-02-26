@@ -21,6 +21,42 @@ export interface UseThemeProviderOptions {
   syncWithSystem?: boolean;
 }
 
+/** Apply dark/light class to <html> immediately */
+function applyThemeToDom(theme: Theme) {
+  if (typeof document === "undefined") return;
+  if (theme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+}
+
+/**
+ * Standalone theme initializer — call in main.ts as escape hatch
+ * when you cannot use ThemeProvider for some reason.
+ *
+ * @example
+ * // main.ts
+ * import { autoInitTheme } from '@four-bytes/four-tailwind-ui'
+ * autoInitTheme()
+ */
+export function autoInitTheme(
+  storageKey = "theme",
+  defaultTheme: Theme = "light",
+) {
+  if (typeof window === "undefined") return;
+  const saved = localStorage.getItem(storageKey) as Theme | null;
+  if (saved === "light" || saved === "dark") {
+    applyThemeToDom(saved);
+    return;
+  }
+  if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
+    applyThemeToDom("dark");
+    return;
+  }
+  applyThemeToDom(defaultTheme);
+}
+
 export function useThemeProvider(options: UseThemeProviderOptions = {}) {
   const {
     storageKey = "theme",
@@ -39,14 +75,6 @@ export function useThemeProvider(options: UseThemeProviderOptions = {}) {
 
   const setTheme = (newTheme: Theme) => {
     theme.value = newTheme;
-  };
-
-  const applyTheme = (newTheme: Theme) => {
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
   };
 
   onMounted(() => {
@@ -69,7 +97,7 @@ export function useThemeProvider(options: UseThemeProviderOptions = {}) {
     }
 
     theme.value = initialTheme;
-    applyTheme(initialTheme);
+    applyThemeToDom(initialTheme);
     isInitialized.value = true;
 
     if (syncWithSystem) {
@@ -79,7 +107,7 @@ export function useThemeProvider(options: UseThemeProviderOptions = {}) {
           if (!localStorage.getItem(storageKey)) {
             const newTheme = e.matches ? "dark" : "light";
             theme.value = newTheme;
-            applyTheme(newTheme);
+            applyThemeToDom(newTheme);
           }
         });
     }
@@ -88,7 +116,7 @@ export function useThemeProvider(options: UseThemeProviderOptions = {}) {
   watch([theme, isInitialized], ([newTheme, initialized]) => {
     if (initialized) {
       localStorage.setItem(storageKey, newTheme);
-      applyTheme(newTheme);
+      applyThemeToDom(newTheme);
     }
   });
 
@@ -107,9 +135,22 @@ export function useThemeProvider(options: UseThemeProviderOptions = {}) {
 export function useTheme(): ThemeContext {
   const context = inject(ThemeSymbol);
   if (!context) {
-    throw new Error(
-      "useTheme must be used within a component that has ThemeProvider as an ancestor",
-    );
+    if ((import.meta as unknown as { env?: { DEV?: boolean } }).env?.DEV) {
+      console.warn(
+        "[four-tailwind-ui] useTheme() called without a ThemeProvider ancestor. " +
+          "Wrap your app root in <ThemeProvider> or <AdminLayout> (which includes it). " +
+          "Alternatively call autoInitTheme() in main.ts. " +
+          "Dark mode will not work correctly without one of these.",
+      );
+    }
+    // Return a minimal no-op fallback so components render without crashing
+    const fallbackTheme = ref<Theme>("light");
+    return {
+      theme: fallbackTheme,
+      isDarkMode: computed(() => false),
+      toggleTheme: () => {},
+      setTheme: () => {},
+    };
   }
   return context;
 }

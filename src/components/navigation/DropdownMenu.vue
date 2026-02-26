@@ -1,10 +1,12 @@
 <template>
-  <div class="relative" ref="dropdownRef">
+  <div :class="cn('relative', props.class)" ref="dropdownRef">
     <!-- Dropdown Trigger -->
     <button
       type="button"
       @click="toggleDropdown"
-      :class="buttonClass"
+      :aria-expanded="isOpen"
+      aria-haspopup="menu"
+      :class="cn(buttonClass)"
     >
       <slot name="trigger">
         <!-- Default: Three dots icon -->
@@ -34,14 +36,15 @@
       leave-from-class="transform scale-100 opacity-100"
       leave-to-class="transform scale-95 opacity-0"
     >
-      <div v-if="isOpen" :class="menuClass">
+      <div v-if="isOpen" role="menu" :class="cn(menuClass)">
         <slot name="menu" :close="closeDropdown">
           <!-- Default menu items from props -->
           <template v-for="(item, index) in items" :key="index">
             <button
               type="button"
               @click="handleItemClick(item)"
-              :class="itemClass"
+              role="menuitem"
+              :class="cn(itemClass)"
             >
               <component v-if="item.icon" :is="item.icon" class="w-4 h-4" />
               {{ item.label }}
@@ -54,68 +57,83 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useClickOutside } from '../../composables/useClickOutside'
+import { ref, onMounted, onUnmounted } from "vue";
+import { useClickOutside } from "../../composables/useClickOutside";
+import { cn } from "../../utils/cn";
+
+defineOptions({ inheritAttrs: false });
 
 export interface DropdownMenuItem {
   /** Display label */
-  label: string
+  label: string;
   /** Icon component (optional) */
-  icon?: object
+  icon?: object;
   /** Click handler */
-  onClick?: () => void
+  onClick?: () => void;
   /** Whether the item is disabled */
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 interface DropdownMenuProps {
   /** Menu items (alternative to using the menu slot) */
-  items?: DropdownMenuItem[]
+  items?: DropdownMenuItem[];
   /** CSS class for the trigger button */
-  buttonClass?: string
+  buttonClass?: string;
   /** CSS class for the dropdown menu */
-  menuClass?: string
+  menuClass?: string;
   /** CSS class for menu items */
-  itemClass?: string
+  itemClass?: string;
   /** Position of the dropdown */
-  position?: 'left' | 'right'
+  position?: "left" | "right";
+  /** Additional CSS classes for the outer wrapper */
+  class?: string;
 }
 
 const props = withDefaults(defineProps<DropdownMenuProps>(), {
   items: () => [],
-  buttonClass: 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300',
+  buttonClass:
+    "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300",
   menuClass:
-    'absolute right-0 z-40 w-40 p-2 space-y-1 bg-white border border-gray-200 top-full mt-1 rounded-2xl shadow-lg dark:border-gray-800 dark:bg-gray-900',
+    "absolute right-0 z-40 w-40 p-2 space-y-1 bg-white border border-gray-200 top-full mt-1 rounded-2xl shadow-lg dark:border-gray-800 dark:bg-gray-900",
   itemClass:
-    'flex w-full items-center gap-2 px-3 py-2 font-medium text-left text-gray-500 rounded-lg text-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300',
-  position: 'right',
-})
+    "flex w-full items-center gap-2 px-3 py-2 font-medium text-left text-gray-500 rounded-lg text-sm hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-300",
+  position: "right",
+});
 
 const emit = defineEmits<{
-  (e: 'select', item: DropdownMenuItem): void
-}>()
+  select: [item: DropdownMenuItem];
+}>();
 
-const isOpen = ref(false)
-const dropdownRef = ref<HTMLElement | null>(null)
+const isOpen = ref(false);
+const dropdownRef = ref<HTMLElement | null>(null);
 
 const toggleDropdown = () => {
-  isOpen.value = !isOpen.value
-}
+  isOpen.value = !isOpen.value;
+};
 
 const closeDropdown = () => {
-  isOpen.value = false
-}
+  isOpen.value = false;
+};
 
 const handleItemClick = (item: DropdownMenuItem) => {
-  if (item.disabled) return
+  if (item.disabled) return;
 
   if (item.onClick) {
-    item.onClick()
+    item.onClick();
   }
 
-  emit('select', item)
-  closeDropdown()
-}
+  emit("select", item);
+  closeDropdown();
+};
 
-useClickOutside(dropdownRef, closeDropdown)
+const handleKeydown = (e: KeyboardEvent) => {
+  if (e.key === "Escape" && isOpen.value) {
+    closeDropdown();
+  }
+};
+
+onMounted(() => document.addEventListener("keydown", handleKeydown));
+onUnmounted(() => document.removeEventListener("keydown", handleKeydown));
+
+useClickOutside(dropdownRef, closeDropdown);
 </script>

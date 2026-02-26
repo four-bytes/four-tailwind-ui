@@ -45,4 +45,6 @@ export { default as TrashIconLg } from './TrashIconLg.vue';
 export { default as UserCircleIcon } from './UserCircleIcon.vue';
 export { default as UserGroupIcon } from './UserGroupIcon.vue';
 export { default as WarningIcon } from './WarningIcon.vue';
+export { default as CalendarIcon } from './CalenderIcon.vue';
+export { default as StarredIcon } from './StaredIcon.vue';
 //# sourceMappingURL=index.d.ts.map

@@ -6,6 +6,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     error?: string;
     min?: string;
     max?: string;
+    class?: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: string) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_TypePropsToRuntimeProps<{
@@ -16,6 +17,7 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     error?: string;
     min?: string;
     max?: string;
+    class?: string;
 }>>> & Readonly<{
     "onUpdate:modelValue"?: ((value: string) => any) | undefined;
 }>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;

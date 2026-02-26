@@ -7,12 +7,12 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     /** Array of metric rows to display */
     rows: StatsRow[];
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {}>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
     /** Array of metric rows to display */
     rows: StatsRow[];
     /** Additional CSS classes for the Card wrapper */
-    className?: string;
+    class?: string;
 }>, {}>>> & Readonly<{}>, {}, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
 export default _default;

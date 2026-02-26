@@ -1,83 +1,83 @@
-import { ref, computed, onMounted, onUnmounted, provide, inject } from 'vue'
-import type { Ref, ComputedRef, InjectionKey } from 'vue'
+import { ref, computed, onMounted, onUnmounted, provide, inject } from "vue";
+import type { Ref, ComputedRef, InjectionKey } from "vue";
 
 export interface SidebarContext {
-  isExpanded: ComputedRef<boolean>
-  isMobileOpen: Ref<boolean>
-  isHovered: Ref<boolean>
-  activeItem: Ref<string | null>
-  openSubmenu: Ref<string | null>
-  toggleSidebar: () => void
-  toggleMobileSidebar: () => void
-  closeMobileSidebar: () => void
-  setIsHovered: (isHovered: boolean) => void
-  setActiveItem: (item: string | null) => void
-  toggleSubmenu: (item: string) => void
+  isExpanded: ComputedRef<boolean>;
+  isMobileOpen: Ref<boolean>;
+  isHovered: Ref<boolean>;
+  activeItem: Ref<string | null>;
+  openSubmenu: Ref<string | null>;
+  toggleSidebar: () => void;
+  toggleMobileSidebar: () => void;
+  closeMobileSidebar: () => void;
+  setIsHovered: (isHovered: boolean) => void;
+  setActiveItem: (item: string | null) => void;
+  toggleSubmenu: (item: string) => void;
 }
 
-export const SidebarSymbol: InjectionKey<SidebarContext> = Symbol('sidebar')
+export const SidebarSymbol: InjectionKey<SidebarContext> = Symbol("sidebar");
 
 export interface UseSidebarProviderOptions {
   /** Initial expanded state (default: true) */
-  initialExpanded?: boolean
+  initialExpanded?: boolean;
   /** Breakpoint for mobile detection in pixels (default: 768) */
-  mobileBreakpoint?: number
+  mobileBreakpoint?: number;
 }
 
 export function useSidebarProvider(options: UseSidebarProviderOptions = {}) {
-  const { initialExpanded = true, mobileBreakpoint = 768 } = options
+  const { initialExpanded = true, mobileBreakpoint = 768 } = options;
 
-  const isExpanded = ref(initialExpanded)
-  const isMobileOpen = ref(false)
-  const isMobile = ref(false)
-  const isHovered = ref(false)
-  const activeItem = ref<string | null>(null)
-  const openSubmenu = ref<string | null>(null)
+  const isExpanded = ref(initialExpanded);
+  const isMobileOpen = ref(false);
+  const isMobile = ref(false);
+  const isHovered = ref(false);
+  const activeItem = ref<string | null>(null);
+  const openSubmenu = ref<string | null>(null);
 
   const handleResize = () => {
-    const mobile = window.innerWidth < mobileBreakpoint
-    isMobile.value = mobile
+    const mobile = window.innerWidth < mobileBreakpoint;
+    isMobile.value = mobile;
     if (!mobile) {
-      isMobileOpen.value = false
+      isMobileOpen.value = false;
     }
-  }
+  };
 
   onMounted(() => {
-    handleResize()
-    window.addEventListener('resize', handleResize)
-  })
+    handleResize();
+    window.addEventListener("resize", handleResize);
+  });
 
   onUnmounted(() => {
-    window.removeEventListener('resize', handleResize)
-  })
+    window.removeEventListener("resize", handleResize);
+  });
 
   const toggleSidebar = () => {
     if (isMobile.value) {
-      isMobileOpen.value = !isMobileOpen.value
+      isMobileOpen.value = !isMobileOpen.value;
     } else {
-      isExpanded.value = !isExpanded.value
+      isExpanded.value = !isExpanded.value;
     }
-  }
+  };
 
   const toggleMobileSidebar = () => {
-    isMobileOpen.value = !isMobileOpen.value
-  }
+    isMobileOpen.value = !isMobileOpen.value;
+  };
 
   const closeMobileSidebar = () => {
-    isMobileOpen.value = false
-  }
+    isMobileOpen.value = false;
+  };
 
   const setIsHovered = (value: boolean) => {
-    isHovered.value = value
-  }
+    isHovered.value = value;
+  };
 
   const setActiveItem = (item: string | null) => {
-    activeItem.value = item
-  }
+    activeItem.value = item;
+  };
 
   const toggleSubmenu = (item: string) => {
-    openSubmenu.value = openSubmenu.value === item ? null : item
-  }
+    openSubmenu.value = openSubmenu.value === item ? null : item;
+  };
 
   const context: SidebarContext = {
     isExpanded: computed(() => (isMobile.value ? false : isExpanded.value)),
@@ -91,19 +91,36 @@ export function useSidebarProvider(options: UseSidebarProviderOptions = {}) {
     setIsHovered,
     setActiveItem,
     toggleSubmenu,
-  }
+  };
 
-  provide(SidebarSymbol, context)
+  provide(SidebarSymbol, context);
 
-  return context
+  return context;
 }
 
 export function useSidebar(): SidebarContext {
-  const context = inject(SidebarSymbol)
+  const context = inject(SidebarSymbol);
   if (!context) {
-    throw new Error(
-      'useSidebar must be used within a component that has SidebarProvider as an ancestor'
-    )
+    if ((import.meta as unknown as { env?: { DEV?: boolean } }).env?.DEV) {
+      console.warn(
+        "[four-tailwind-ui] useSidebar() called without a SidebarProvider ancestor. " +
+          "Wrap your layout in <AdminLayout> or <SidebarProvider>.",
+      );
+    }
+    // Return a minimal no-op fallback
+    return {
+      isExpanded: computed(() => true),
+      isMobileOpen: ref(false),
+      isHovered: ref(false),
+      activeItem: ref(null),
+      openSubmenu: ref(null),
+      toggleSidebar: () => {},
+      toggleMobileSidebar: () => {},
+      closeMobileSidebar: () => {},
+      setIsHovered: () => {},
+      setActiveItem: () => {},
+      toggleSubmenu: () => {},
+    };
   }
-  return context
+  return context;
 }

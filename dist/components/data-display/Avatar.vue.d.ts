@@ -1,5 +1,5 @@
-type AvatarSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge';
-type AvatarStatus = 'online' | 'offline' | 'busy' | 'none';
+type AvatarSize = "xsmall" | "small" | "medium" | "large" | "xlarge" | "xxlarge";
+type AvatarStatus = "online" | "offline" | "busy" | "none";
 interface AvatarProps {
     /** Image source URL */
     src?: string;
@@ -17,6 +17,8 @@ interface AvatarProps {
     initialsBgClass?: string;
     /** Text class for initials avatar */
     initialsTextClass?: string;
+    /** Additional CSS classes for the outer wrapper */
+    class?: string;
 }
 declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<AvatarProps>, {
     alt: string;

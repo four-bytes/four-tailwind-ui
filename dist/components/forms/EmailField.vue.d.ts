@@ -9,11 +9,13 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
         required?: string;
         invalid?: string;
     };
+    class?: string;
 }>, {
     errorMessages: () => {
         required: string;
         invalid: string;
     };
+    class: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: string) => void;
     validation: (valid: boolean) => void;
@@ -28,15 +30,18 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
         required?: string;
         invalid?: string;
     };
+    class?: string;
 }>, {
     errorMessages: () => {
         required: string;
         invalid: string;
     };
+    class: string;
 }>>> & Readonly<{
     "onUpdate:modelValue"?: ((value: string) => any) | undefined;
     onValidation?: ((valid: boolean) => any) | undefined;
 }>, {
+    class: string;
     errorMessages: {
         required?: string;
         invalid?: string;

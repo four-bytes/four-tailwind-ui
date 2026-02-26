@@ -1,17 +1,19 @@
 interface AlertProps {
-    variant: 'success' | 'error' | 'warning' | 'info';
+    variant: "success" | "error" | "warning" | "info";
     title: string;
     message: string;
     showLink?: boolean;
     linkHref?: string;
     linkText?: string;
     dismissible?: boolean;
+    class?: string;
 }
 declare const _default: import('vue').DefineComponent<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<AlertProps>, {
     showLink: boolean;
     linkHref: string;
     linkText: string;
     dismissible: boolean;
+    class: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     dismiss: () => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<AlertProps>, {
@@ -19,9 +21,11 @@ declare const _default: import('vue').DefineComponent<import('vue').ExtractPropT
     linkHref: string;
     linkText: string;
     dismissible: boolean;
+    class: string;
 }>>> & Readonly<{
     onDismiss?: (() => any) | undefined;
 }>, {
+    class: string;
     showLink: boolean;
     linkHref: string;
     linkText: string;

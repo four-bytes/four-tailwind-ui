@@ -15,8 +15,10 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     error?: string;
     prefix?: string;
     suffix?: string;
+    class?: string;
 }>, {
     type: string;
+    class: string;
 }>>, {}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {
     "update:modelValue": (value: string) => void;
 }, string, import('vue').PublicProps, Readonly<import('vue').ExtractPropTypes<__VLS_WithDefaults<__VLS_TypePropsToRuntimeProps<{
@@ -29,11 +31,14 @@ declare const __VLS_component: import('vue').DefineComponent<import('vue').Extra
     error?: string;
     prefix?: string;
     suffix?: string;
+    class?: string;
 }>, {
     type: string;
+    class: string;
 }>>> & Readonly<{
     "onUpdate:modelValue"?: ((value: string) => any) | undefined;
 }>, {
+    class: string;
     type: string;
 }, {}, {}, {}, string, import('vue').ComponentProvideOptions, true, {}, any>;
 declare const _default: __VLS_WithTemplateSlots<typeof __VLS_component, ReturnType<typeof __VLS_template>>;
