@@ -104,3 +104,9 @@
 - `src/style-tokens.css` (neu): Theme-Tokens, @custom-variant dark, @layer base, @layer utilities — ohne Tailwind-Import
 - `src/style.css`: Enthält nur noch @import "tailwindcss" + @import "./style-tokens.css" + @source
 - Konsumenten importieren jetzt `style-tokens.css` statt `style.css` — kein doppeltes Tailwind-Processing mehr
+
+## [0.3.3] — 2026-02-26
+
+### Geändert
+- `AdminLayout.vue`: ThemeProvider + SidebarProvider entfernt (gehören in die App, nicht in die Lib)
+- `AdminLayoutContent.vue`: Wieder direkt in AdminLayout integriert
