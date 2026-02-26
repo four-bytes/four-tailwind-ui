@@ -8,6 +8,8 @@
 /** All supported Tailwind color names */
 export type TailwindColor = "red" | "orange" | "amber" | "yellow" | "lime" | "green" | "emerald" | "teal" | "cyan" | "sky" | "blue" | "indigo" | "violet" | "purple" | "fuchsia" | "pink" | "rose" | "brand";
 export interface ColorClasses {
+    /** Hex color value (500 shade) for inline styles */
+    hex: string;
     /** SVG stroke for track/background (light mode) */
     trackLight: string;
     /** SVG stroke for track/background (dark mode) */

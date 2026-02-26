@@ -133,3 +133,7 @@
 ## v0.3.9 — 2026-02-26
 - Fix: BarChart Balkenfarben per CSS color-mix() statt dynamischer Tailwind-Klassen
 - Fix: BarChart Label-Farben per inline style statt dynamischer Tailwind-Klassen
+
+## v0.3.10 — 2026-02-26
+- Fix: BarChart Balkenfarben per Hex-Wert statt CSS-Variablen (--color-* nicht verfügbar in Tailwind v4 für Standard-Farben)
+- Neu: ColorClasses.hex Property in colorMap für alle 18 Farben

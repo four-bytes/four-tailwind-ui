@@ -28,6 +28,8 @@ export type TailwindColor =
   | "brand";
 
 export interface ColorClasses {
+  /** Hex color value (500 shade) for inline styles */
+  hex: string;
   /** SVG stroke for track/background (light mode) */
   trackLight: string;
   /** SVG stroke for track/background (dark mode) */
@@ -58,6 +60,7 @@ export interface ColorClasses {
 
 export const colorMap: Record<TailwindColor, ColorClasses> = {
   red: {
+    hex: "#ef4444",
     trackLight: "stroke-red-200",
     trackDark: "dark:stroke-red-900/40",
     bar: "stroke-red-500",
@@ -73,6 +76,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-red-500/25",
   },
   orange: {
+    hex: "#f97316",
     trackLight: "stroke-orange-200",
     trackDark: "dark:stroke-orange-900/40",
     bar: "stroke-orange-500",
@@ -88,6 +92,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-orange-500/25",
   },
   amber: {
+    hex: "#f59e0b",
     trackLight: "stroke-amber-200",
     trackDark: "dark:stroke-amber-900/30",
     bar: "stroke-amber-500",
@@ -103,6 +108,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-amber-500/25",
   },
   yellow: {
+    hex: "#eab308",
     trackLight: "stroke-yellow-200",
     trackDark: "dark:stroke-yellow-900/30",
     bar: "stroke-yellow-500",
@@ -118,6 +124,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-yellow-500/25",
   },
   lime: {
+    hex: "#84cc16",
     trackLight: "stroke-lime-200",
     trackDark: "dark:stroke-lime-900/30",
     bar: "stroke-lime-500",
@@ -133,6 +140,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-lime-500/25",
   },
   green: {
+    hex: "#22c55e",
     trackLight: "stroke-green-200",
     trackDark: "dark:stroke-green-900/30",
     bar: "stroke-green-500",
@@ -148,6 +156,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-green-500/25",
   },
   emerald: {
+    hex: "#10b981",
     trackLight: "stroke-emerald-200",
     trackDark: "dark:stroke-emerald-900/30",
     bar: "stroke-emerald-500",
@@ -163,6 +172,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-emerald-500/25",
   },
   teal: {
+    hex: "#14b8a6",
     trackLight: "stroke-teal-200",
     trackDark: "dark:stroke-teal-900/30",
     bar: "stroke-teal-500",
@@ -178,6 +188,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-teal-500/25",
   },
   cyan: {
+    hex: "#06b6d4",
     trackLight: "stroke-cyan-200",
     trackDark: "dark:stroke-cyan-900/30",
     bar: "stroke-cyan-500",
@@ -193,6 +204,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-cyan-500/25",
   },
   sky: {
+    hex: "#0ea5e9",
     trackLight: "stroke-sky-200",
     trackDark: "dark:stroke-sky-900/30",
     bar: "stroke-sky-500",
@@ -208,6 +220,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-sky-500/25",
   },
   blue: {
+    hex: "#3b82f6",
     trackLight: "stroke-blue-200",
     trackDark: "dark:stroke-blue-900/30",
     bar: "stroke-blue-500",
@@ -223,6 +236,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-blue-500/25",
   },
   indigo: {
+    hex: "#6366f1",
     trackLight: "stroke-indigo-200",
     trackDark: "dark:stroke-indigo-900/30",
     bar: "stroke-indigo-500",
@@ -238,6 +252,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-indigo-500/25",
   },
   violet: {
+    hex: "#8b5cf6",
     trackLight: "stroke-violet-200",
     trackDark: "dark:stroke-violet-900/30",
     bar: "stroke-violet-500",
@@ -253,6 +268,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-violet-500/25",
   },
   purple: {
+    hex: "#a855f7",
     trackLight: "stroke-purple-200",
     trackDark: "dark:stroke-purple-900/30",
     bar: "stroke-purple-500",
@@ -268,6 +284,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-purple-500/25",
   },
   fuchsia: {
+    hex: "#d946ef",
     trackLight: "stroke-fuchsia-200",
     trackDark: "dark:stroke-fuchsia-900/30",
     bar: "stroke-fuchsia-500",
@@ -283,6 +300,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-fuchsia-500/25",
   },
   pink: {
+    hex: "#ec4899",
     trackLight: "stroke-pink-200",
     trackDark: "dark:stroke-pink-900/30",
     bar: "stroke-pink-500",
@@ -298,6 +316,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-pink-500/25",
   },
   rose: {
+    hex: "#f43f5e",
     trackLight: "stroke-rose-200",
     trackDark: "dark:stroke-rose-900/30",
     bar: "stroke-rose-500",
@@ -313,6 +332,7 @@ export const colorMap: Record<TailwindColor, ColorClasses> = {
     barSolidFaded: "bg-rose-500/25",
   },
   brand: {
+    hex: "#465fff",
     trackLight: "stroke-brand-200",
     trackDark: "dark:stroke-brand-900/30",
     bar: "stroke-brand-500",

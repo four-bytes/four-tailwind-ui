@@ -60,9 +60,14 @@ function barHeight(value: number): string {
   return `${Math.max(props.minBarPercent, (value / maxValue.value) * 100)}%`;
 }
 
-/** Gibt die CSS-Farbe für die gewählte Farbe zurück (Tailwind v4 color-mix) */
+/** Gibt die CSS-Farbe für die gewählte Farbe zurück (Hex + Alpha) */
 function barColor(opacity: number): string {
-  return `color-mix(in srgb, var(--color-${props.color}-500) ${opacity}%, transparent)`;
+  const hex = colors.value.hex;
+  if (opacity >= 100) return hex;
+  const alpha = Math.round((opacity / 100) * 255)
+    .toString(16)
+    .padStart(2, "0");
+  return `${hex}${alpha}`;
 }
 
 /** Find indices where group changes (for boundary lines) */
@@ -143,9 +148,7 @@ const groupBoundaryIndices = computed(() => {
           <span
             class="text-[9px] leading-none mt-1.5 shrink-0"
             :style="{
-              color: bar.highlighted
-                ? `var(--color-${props.color}-500)`
-                : undefined,
+              color: bar.highlighted ? colors.hex : undefined,
               fontWeight: bar.highlighted ? '500' : undefined,
               opacity:
                 bar.group !== items[items.length - 1]?.group && !bar.highlighted
