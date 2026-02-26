@@ -17,7 +17,7 @@ export declare const SidebarSymbol: InjectionKey<SidebarContext>;
 export interface UseSidebarProviderOptions {
     /** Initial expanded state (default: true) */
     initialExpanded?: boolean;
-    /** Breakpoint for mobile detection in pixels (default: 768) */
+    /** Breakpoint for mobile detection in pixels (default: 1024) */
     mobileBreakpoint?: number;
 }
 export declare function useSidebarProvider(options?: UseSidebarProviderOptions): SidebarContext;

@@ -3,23 +3,23 @@
 </template>
 
 <script setup lang="ts">
-import { useSidebarProvider } from '../../composables/useSidebar'
+import { useSidebarProvider } from "../../composables/useSidebar";
 
 const props = withDefaults(
   defineProps<{
     /** Initial expanded state */
-    initialExpanded?: boolean
+    initialExpanded?: boolean;
     /** Breakpoint for mobile detection in pixels */
-    mobileBreakpoint?: number
+    mobileBreakpoint?: number;
   }>(),
   {
     initialExpanded: true,
-    mobileBreakpoint: 768,
-  }
-)
+    mobileBreakpoint: 1024,
+  },
+);
 
 useSidebarProvider({
   initialExpanded: props.initialExpanded,
   mobileBreakpoint: props.mobileBreakpoint,
-})
+});
 </script>

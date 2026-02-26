@@ -116,3 +116,8 @@
 ### Geändert
 - `AdminLayout.vue`: ThemeProvider + SidebarProvider korrekt integriert mit Props (defaultTheme, storageKey, syncWithSystem)
 - Konsumenten müssen nur noch `<AdminLayout default-theme="dark">` verwenden
+
+## v0.3.5 — 2026-02-26
+- Fix: mobileBreakpoint Default von 768 auf 1024 vereinheitlicht
+- Fix: Header handleToggle nutzt toggleSidebar() statt window.innerWidth-Check
+- Fix: Backdrop erschien fälschlicherweise nach API-Responses (isMobileOpen-Bug)

@@ -116,16 +116,12 @@ import { ref } from "vue";
 import { useSidebar } from "../../composables/useSidebar";
 import { cn } from "../../utils/cn";
 
-const { toggleSidebar, toggleMobileSidebar, isMobileOpen } = useSidebar();
+const { toggleSidebar, isMobileOpen } = useSidebar();
 
 const isApplicationMenuOpen = ref(false);
 
 const handleToggle = () => {
-  if (typeof window !== "undefined" && window.innerWidth >= 1024) {
-    toggleSidebar();
-  } else {
-    toggleMobileSidebar();
-  }
+  toggleSidebar();
 };
 
 const toggleApplicationMenu = () => {

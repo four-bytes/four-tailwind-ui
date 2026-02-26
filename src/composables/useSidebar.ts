@@ -20,12 +20,12 @@ export const SidebarSymbol: InjectionKey<SidebarContext> = Symbol("sidebar");
 export interface UseSidebarProviderOptions {
   /** Initial expanded state (default: true) */
   initialExpanded?: boolean;
-  /** Breakpoint for mobile detection in pixels (default: 768) */
+  /** Breakpoint for mobile detection in pixels (default: 1024) */
   mobileBreakpoint?: number;
 }
 
 export function useSidebarProvider(options: UseSidebarProviderOptions = {}) {
-  const { initialExpanded = true, mobileBreakpoint = 768 } = options;
+  const { initialExpanded = true, mobileBreakpoint = 1024 } = options;
 
   const isExpanded = ref(initialExpanded);
   const isMobileOpen = ref(false);
