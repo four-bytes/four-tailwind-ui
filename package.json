@@ -1,6 +1,6 @@
 {
   "name": "@four-bytes/four-tailwind-ui",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Reusable Vue 3 + Tailwind CSS UI components by Four Bytes",
   "type": "module",
   "main": "./dist/four-tailwind-ui.umd.cjs",

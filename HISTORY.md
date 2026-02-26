@@ -110,3 +110,9 @@
 ### Geändert
 - `AdminLayout.vue`: ThemeProvider + SidebarProvider entfernt (gehören in die App, nicht in die Lib)
 - `AdminLayoutContent.vue`: Wieder direkt in AdminLayout integriert
+
+## [0.3.4] — 2026-02-26
+
+### Geändert
+- `AdminLayout.vue`: ThemeProvider + SidebarProvider korrekt integriert mit Props (defaultTheme, storageKey, syncWithSystem)
+- Konsumenten müssen nur noch `<AdminLayout default-theme="dark">` verwenden
