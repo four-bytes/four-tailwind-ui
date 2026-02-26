@@ -60,6 +60,11 @@ function barHeight(value: number): string {
   return `${Math.max(props.minBarPercent, (value / maxValue.value) * 100)}%`;
 }
 
+/** Gibt die CSS-Farbe für die gewählte Farbe zurück (Tailwind v4 color-mix) */
+function barColor(opacity: number): string {
+  return `color-mix(in srgb, var(--color-${props.color}-500) ${opacity}%, transparent)`;
+}
+
 /** Find indices where group changes (for boundary lines) */
 const groupBoundaryIndices = computed(() => {
   if (!props.showGroupBoundary) return new Set<number>();
@@ -123,31 +128,30 @@ const groupBoundaryIndices = computed(() => {
           <!-- Bar container -->
           <div class="w-full flex-1 relative">
             <div
-              :class="
-                cn(
-                  'absolute bottom-0 left-0.5 right-0.5 rounded-t transition-all duration-500',
-                  bar.highlighted
-                    ? colors.barSolid
-                    : bar.group === items[items.length - 1]?.group
-                      ? colors.barSolidMuted
-                      : colors.barSolidFaded,
-                )
-              "
-              :style="{ height: barHeight(bar.value) }"
+              class="absolute bottom-0 left-0.5 right-0.5 rounded-t transition-all duration-500"
+              :style="{
+                height: barHeight(bar.value),
+                backgroundColor: bar.highlighted
+                  ? barColor(100)
+                  : bar.group === items[items.length - 1]?.group
+                    ? barColor(50)
+                    : barColor(25),
+              }"
             />
           </div>
           <!-- Label -->
           <span
-            :class="
-              cn(
-                'text-[9px] leading-none mt-1.5 shrink-0',
-                bar.highlighted
-                  ? `${colors.textLight} ${colors.textDark} font-medium`
-                  : bar.group === items[items.length - 1]?.group
-                    ? 'text-gray-500 dark:text-gray-500'
-                    : 'text-gray-300 dark:text-gray-500',
-              )
-            "
+            class="text-[9px] leading-none mt-1.5 shrink-0"
+            :style="{
+              color: bar.highlighted
+                ? `var(--color-${props.color}-500)`
+                : undefined,
+              fontWeight: bar.highlighted ? '500' : undefined,
+              opacity:
+                bar.group !== items[items.length - 1]?.group && !bar.highlighted
+                  ? '0.4'
+                  : undefined,
+            }"
           >
             {{ bar.label }}
           </span>

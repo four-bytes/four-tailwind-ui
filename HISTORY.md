@@ -129,3 +129,7 @@
 ## v0.3.8 — 2026-02-26
 - Fix: Gradient-Overlay-Div aus KeyValueList, BarChart, SemiCircleGauge entfernt
 - Fix: Gradient direkt als bg-gradient-to-br auf Card angewendet (kein absolute/relative mehr)
+
+## v0.3.9 — 2026-02-26
+- Fix: BarChart Balkenfarben per CSS color-mix() statt dynamischer Tailwind-Klassen
+- Fix: BarChart Label-Farben per inline style statt dynamischer Tailwind-Klassen
