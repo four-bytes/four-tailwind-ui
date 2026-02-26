@@ -4412,7 +4412,8 @@ const E0 = /* @__PURE__ */ L({
       class: g(
         d(m)(
           "rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]",
-          t.class
+          t.class,
+          r.$attrs.class
         )
       )
     }, [
@@ -4932,7 +4933,7 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
       } : void 0
     ]), 1032, ["class"]));
   }
-}), Ir = { class: "relative p-4" }, zr = { class: "flex items-center gap-2 mb-3" }, Tr = { class: "text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" }, Dr = { class: "flex items-baseline gap-1" }, jr = {
+}), Ir = { class: "p-4" }, zr = { class: "flex items-center gap-2 mb-3" }, Tr = { class: "text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider" }, Dr = { class: "flex items-baseline gap-1" }, jr = {
   key: 0,
   class: "text-sm text-gray-400 dark:text-gray-500"
 }, ma = /* @__PURE__ */ L({
@@ -4959,7 +4960,8 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
     return (a, i) => (o(), Z(te, {
       class: g(
         d(m)(
-          "group relative overflow-hidden transition-colors",
+          "group transition-colors bg-gradient-to-br to-transparent",
+          r.value.gradient,
           r.value.hoverBorder,
           t.class
         )
@@ -4967,9 +4969,6 @@ const ir = { class: "relative p-4 flex flex-col items-center" }, dr = { class: "
       "content-class": "!p-0"
     }, {
       default: _(() => [
-        l("div", {
-          class: g(`absolute inset-0 bg-gradient-to-br ${r.value.gradient} to-transparent`)
-        }, null, 2),
         l("div", Ir, [
           l("div", zr, [
             l("div", {

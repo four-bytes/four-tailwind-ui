@@ -49,17 +49,15 @@ const displayValue = computed(() => {
   <Card
     :class="
       cn(
-        'group relative overflow-hidden transition-colors',
+        'group transition-colors bg-gradient-to-br to-transparent',
+        colors.gradient,
         colors.hoverBorder,
         props.class,
       )
     "
     content-class="!p-0"
   >
-    <div
-      :class="`absolute inset-0 bg-gradient-to-br ${colors.gradient} to-transparent`"
-    />
-    <div class="relative p-4">
+    <div class="p-4">
       <div class="flex items-center gap-2 mb-3">
         <div
           :class="

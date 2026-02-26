@@ -121,3 +121,7 @@
 - Fix: mobileBreakpoint Default von 768 auf 1024 vereinheitlicht
 - Fix: Header handleToggle nutzt toggleSidebar() statt window.innerWidth-Check
 - Fix: Backdrop erschien fälschlicherweise nach API-Responses (isMobileOpen-Bug)
+
+## v0.3.7 — 2026-02-26
+- Fix: StatCard Gradient-Overlay-Div entfernt — direkt als bg-gradient auf Card angewendet
+- Fix: kein absolute/relative/overflow-hidden mehr nötig in StatCard
